@@ -16,7 +16,17 @@
 </head>
 <body>
 
-    <div id="infoAksi">E</div>
+    <nav id="navbar">
+        <div>
+            <button><</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>></button>
+        </div>
+        <button>Login User</button>
+        <button>Login Admin</button>
+    </nav>
     <script type="importmap">
         {
             "imports": {

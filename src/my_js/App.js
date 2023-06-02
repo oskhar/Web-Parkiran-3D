@@ -12,7 +12,7 @@ class App extends THREE.WebGLRenderer {
         // Atribute
         super();
         this.world = new MyWorld(0.1);
-        this.eye = new MyEye(45, innerWidth/innerHeight, 1, 5000);
+        this.eye = new MyEye(45, innerWidth/innerHeight, 0.5, 500);
         this.keyboard = [];
         this.analog = new AnalogControl();
         this.rangeSide = 3;
@@ -55,9 +55,9 @@ class App extends THREE.WebGLRenderer {
             this.eye.gerakan(-0.1);
         }
         if (this.keyboard['a']) {
-            this.eye.putar(0.01);
-        } else if (this.keyboard['d']) {
             this.eye.putar(-0.01);
+        } else if (this.keyboard['d']) {
+            this.eye.putar(0.01);
         }
 
         // Action for move eye
@@ -91,7 +91,7 @@ class MyWorld extends THREE.Scene {
             './assets/images/nz.png'
         ]);
         this.background = this.skybox;
-        this.add(new THREE.AmbientLight(0xffffff, 0.3));
+        this.add(new THREE.AmbientLight(0xffffff, 0.25));
 
 
         // Create 3d object
@@ -165,8 +165,8 @@ class MyEye extends THREE.PerspectiveCamera {
 
         super(fov, asp, nea, far);
         this.filmGauge = 4;
-        this.position.z = 0;
-        this.position.y = 2;
+        this.position.y = 3;
+        this.rotation.y = -1;
 
     }
 
