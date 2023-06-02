@@ -49,9 +49,9 @@ class App extends THREE.WebGLRenderer {
     action () {
 
         // Action for move user & sun
-        if (this.keyboard['w']) {
+        if (this.keyboard['w'] && this.eye.position.x > -32) {
             this.eye.gerakan(0.1);
-        } else if (this.keyboard['s']) {
+        } else if (this.keyboard['s'] && this.eye.position.x < 32) {
             this.eye.gerakan(-0.1);
         }
         if (this.keyboard['a']) {
@@ -91,7 +91,7 @@ class MyWorld extends THREE.Scene {
             './assets/images/nz.png'
         ]);
         this.background = this.skybox;
-        this.add(new THREE.AmbientLight(0xffffff, 0.2));
+        this.add(new THREE.AmbientLight(0xffffff, 0.3));
 
 
         // Create 3d object
@@ -166,7 +166,7 @@ class MyEye extends THREE.PerspectiveCamera {
         super(fov, asp, nea, far);
         this.filmGauge = 4;
         this.position.z = 0;
-        this.position.y = 3;
+        this.position.y = 2;
 
     }
 
