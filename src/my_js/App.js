@@ -11,8 +11,8 @@ class App extends THREE.WebGLRenderer {
 
         // Atribute
         super();
-        this.world = new MyWorld(0.1);
-        this.eye = new MyEye(45, innerWidth/innerHeight, 0.5, 500);
+        this.world = new MyWorld();
+        this.eye = new MyEye(45, innerWidth/innerHeight, 1, 500);
         this.keyboard = [];
         this.analog = new AnalogControl();
         this.rangeSide = 3;
@@ -60,9 +60,15 @@ class App extends THREE.WebGLRenderer {
             this.eye.putar(0.01);
         }
 
-        // Action for move eye
+        // Naik lantai
 
-        // Action for jump
+        if (this.keyboard['naik'] && this.eye.rangeRender == 0) {
+            this.eye.rangeRender = 1;
+        }
+        if (this.eye.rangeRender != 0) {
+            this.eye.ganti_lantai();
+            this.eye.rangeRender = this.eye.rangeRender <= 50 ? this.eye.rangeRender + 1 : 0;
+        }
 
         // Action analog control
         if (this.analog.touch) {
@@ -77,7 +83,7 @@ class App extends THREE.WebGLRenderer {
 class MyWorld extends THREE.Scene {
 
     // Constructor
-    constructor (besarLangkah) {
+    constructor () {
 
         // Atribute
         super();
@@ -106,14 +112,36 @@ class MyWorld extends THREE.Scene {
             this.addLamp(Model.lampData[i]['light'], Model.lampData[i]['color']);
         }
 
+        // Check action area
+        this.check();
+
         // Create action area
-        for (let i = 0; i < Object.keys(Model.actionData).length; i++) {
-            this.addAreaAction(Model.actionData[i]['path'], Model.actionData[i]['position'], Model.actionData[i]['scale']);
+        for (let i = 0; i < Object.keys(this.isiParkir[0]).length; i++) {
+            this.addAreaAction(this.isiParkir[0][i]['path'], this.isiParkir[0][i]['position'], this.isiParkir[0][i]['scale']);
             
         }
 
-        // Create lamp on my Home
+    }
 
+    // Method
+    check () {
+        this.isiParkir = [[], [], []];
+        for (let x = 0; x < 3; x++) {
+            for (let i = 0; i < 14; i++) {
+                this.isiParkir[x].push({
+                    "status": "kosong",
+                    "path": "./assets/images/Kosong.png",
+                    "position": [31.5-(i*4.9), 2, -12],
+                    "scale": [1, 3, 1]
+                });
+                this.isiParkir[x].push({
+                    "status": "kosong",
+                    "path": "./assets/images/Kosong.png",
+                    "position": [31.5-(i*4.9), 2, 12],
+                    "scale": [1, 3, 1]
+                });
+            }
+        }
     }
 
     // Method
@@ -166,19 +194,27 @@ class MyEye extends THREE.PerspectiveCamera {
         super(fov, asp, nea, far);
         this.filmGauge = 4;
         this.position.y = 3;
-        this.rotation.y = -1;
+        this.position.y = 3;
+        this.rangeRender = 0;
 
     }
 
     // Method
-    gerakan (corz) {
-        this.position.x -= corz;
-
+    gerakan (corx) {
+        this.position.x -= corx;
     }
 
     // Method
-    putar (corz) {
-        this.rotation.y -= corz;
+    putar (cory) {
+        this.rotation.y -= cory;
+    }
+
+    // Method
+    ganti_lantai () {
+        
+        if (this.rangeRender <= 50) {
+            this.position.y += 0.5;
+        }
 
     }
 
@@ -214,8 +250,6 @@ document.body.onresize = function () {
    run.eye.aspect = innerWidth/innerHeight;
    run.eye.updateProjectionMatrix();
 };
-
-// Mouse control
 
 // Analog control
 window.touchAnalog = function(event) {
@@ -267,6 +301,5 @@ window.mobileCheck = function() {
 // Config mobile device
 if (mobileCheck()) {
     run.analog.addToDom();
-    run.world.sun.besarLangkah = 0.08;
     run.rangeSide = 1;
 }

@@ -22,11 +22,11 @@ var objectData = [
 
 // ModelAction
 var actionData = [
-    // {
-    //     "path": "./lib/img/areaAction1.png",
-    //     "position": [13, 0, -20],
-    //     "scale": [1, 1, 1]
-    // }
+    {
+        "path": "./assets/images/Penuh.png",
+        "position": [31.6, 2, -12],
+        "scale": [1, 3, 1]
+    }
 ];
 
 var areaData = [

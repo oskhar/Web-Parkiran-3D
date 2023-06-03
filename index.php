@@ -16,17 +16,15 @@
 </head>
 <body>
 
-    <nav id="navbar">
-        <div>
-            <button><</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>></button>
-        </div>
-        <button>Login User</button>
-        <button>Login Admin</button>
-    </nav>
+    <div id="lantai">
+        <button><</button>
+        <button>3</button>
+        <button onclick="this.id='active';run.keyboard['naik'] = true;">2</button>
+        <button id="active">1</button>
+        <button>></button>
+    </div>
+    <button id="log_user">Login User</button>
+    <button id="log_admin">Login Admin</button>
     <script type="importmap">
         {
             "imports": {
