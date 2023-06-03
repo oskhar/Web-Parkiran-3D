@@ -51,14 +51,14 @@ class App extends THREE.WebGLRenderer {
 
         // Action for move user & sun
         if (this.keyboard['w'] && this.eye.position.x > -32) {
-            this.eye.gerakan(0.1);
+            this.eye.gerakan(0.2);
         } else if (this.keyboard['s'] && this.eye.position.x < 32) {
-            this.eye.gerakan(-0.1);
+            this.eye.gerakan(-0.2);
         }
         if (this.keyboard['a']) {
-            this.eye.putar(-0.01);
+            this.eye.putar(-0.025);
         } else if (this.keyboard['d']) {
-            this.eye.putar(0.01);
+            this.eye.putar(0.025);
         }
 
         // Naik lantai
@@ -135,13 +135,11 @@ class MyWorld extends THREE.Scene {
         for (let x = 0; x < 3; x++) {
             for (let i = 0; i < 14; i++) {
                 this.isiParkir[x].push({
-                    "status": "kosong",
                     "path": "./assets/images/Kosong.png",
                     "position": [31.5-(i*4.9), 2+(x*12.5), -12],
                     "scale": [1, 3, 1]
                 });
                 this.isiParkir[x].push({
-                    "status": "kosong",
                     "path": "./assets/images/Kosong.png",
                     "position": [31.5-(i*4.9), 2+(x*12.5), 12],
                     "scale": [1, 3, 1]
@@ -220,9 +218,9 @@ class MyEye extends THREE.PerspectiveCamera {
     ganti_lantai (batas) {
         
         if (this.position.y < batas) {
-            this.position.y += 0.05;
+            this.position.y += 0.2;
         } else if (this.position.y > batas) {
-            this.position.y -= 0.05;
+            this.position.y -= 0.2;
         }
 
     }

@@ -12,7 +12,7 @@
         Date: December 2020,
         Purpose: Training ">
     <link rel="stylesheet" href="src/my_css/style.css">
-    <title>Hi, I'm Oskhar 👋🏼</title>
+    <title>Si Paling Parkir 😎</title>
 </head>
 <body>
 
@@ -32,7 +32,6 @@
             }
         }
     </script>
-
     <script type="module" src="src/my_js/App.js"></script>
     
 </body>
