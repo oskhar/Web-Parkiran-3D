@@ -17,6 +17,7 @@ class App extends THREE.WebGLRenderer {
         this.analog = new AnalogControl();
         this.rangeSide = 3;
         this.homeLampOff = true;
+        this.lantai = this.eye.position.y;
 
         // Set latar
         this.latar = document.createElement('div');
@@ -62,12 +63,14 @@ class App extends THREE.WebGLRenderer {
 
         // Naik lantai
 
-        if (this.keyboard['naik'] && this.eye.rangeRender == 0) {
-            this.eye.rangeRender = 1;
+        if (this.keyboard['naik'] && !this.eye.rangeRender) {
+            this.eye.rangeRender = true;
+            this.keyboard['naik'] = false;
         }
-        if (this.eye.rangeRender != 0) {
-            this.eye.ganti_lantai();
-            this.eye.rangeRender = this.eye.rangeRender <= 50 ? this.eye.rangeRender + 1 : 0;
+        if (this.eye.rangeRender) {
+            this.eye.ganti_lantai(this.lantai);
+            this.eye.rangeRender = Math.floor(this.eye.position.y)+1 == this.lantai ? false : true;
+            console.log(this.eye.position.y + " - " + this.lantai);
         }
 
         // Action analog control
@@ -116,8 +119,11 @@ class MyWorld extends THREE.Scene {
         this.check();
 
         // Create action area
-        for (let i = 0; i < Object.keys(this.isiParkir[0]).length; i++) {
-            this.addAreaAction(this.isiParkir[0][i]['path'], this.isiParkir[0][i]['position'], this.isiParkir[0][i]['scale']);
+        for (let x = 0; x < 3; x++) {
+
+            for (let i = 0; i < Object.keys(this.isiParkir[x]).length; i++) {
+                this.addAreaAction(this.isiParkir[x][i]['path'], this.isiParkir[x][i]['position'], this.isiParkir[x][i]['scale']);   
+            }
             
         }
 
@@ -131,13 +137,13 @@ class MyWorld extends THREE.Scene {
                 this.isiParkir[x].push({
                     "status": "kosong",
                     "path": "./assets/images/Kosong.png",
-                    "position": [31.5-(i*4.9), 2, -12],
+                    "position": [31.5-(i*4.9), 2+(x*12.5), -12],
                     "scale": [1, 3, 1]
                 });
                 this.isiParkir[x].push({
                     "status": "kosong",
                     "path": "./assets/images/Kosong.png",
-                    "position": [31.5-(i*4.9), 2, 12],
+                    "position": [31.5-(i*4.9), 2+(x*12.5), 12],
                     "scale": [1, 3, 1]
                 });
             }
@@ -194,8 +200,9 @@ class MyEye extends THREE.PerspectiveCamera {
         super(fov, asp, nea, far);
         this.filmGauge = 4;
         this.position.y = 3;
-        this.position.y = 3;
-        this.rangeRender = 0;
+        this.position.x = 30;
+        this.rotation.y = -5;
+        this.rangeRender = false;
 
     }
 
@@ -210,10 +217,12 @@ class MyEye extends THREE.PerspectiveCamera {
     }
 
     // Method
-    ganti_lantai () {
+    ganti_lantai (batas) {
         
-        if (this.rangeRender <= 50) {
-            this.position.y += 0.5;
+        if (this.position.y < batas) {
+            this.position.y += 0.05;
+        } else if (this.position.y > batas) {
+            this.position.y -= 0.05;
         }
 
     }
@@ -239,9 +248,22 @@ document.body.onkeydown = function (e) {
     }
 
 }
-
 document.body.onkeyup = function (e) {
     run.keyboard[e.key] = false;
+}
+
+// Ganti lantai Controller
+window.gantiLantai = function (el, locY) {
+
+    for (let i = 1; i <= 3; i++) {
+        document.getElementById("l"+i).classList.remove("active");
+    }
+    el.classList.add("active");
+    if (run.lantai != locY) {
+        run.keyboard['naik'] = true;
+        run.lantai = locY;
+    }
+
 }
 
 // User resize app

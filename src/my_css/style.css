@@ -36,7 +36,7 @@ body {
     border-radius: 5px;
 }
 
-body #active {
+body #lantai .active {
     background-color: #bd93f9;
     color: #f8f8f2;
 }
@@ -61,8 +61,12 @@ body #active {
     z-index: 2;
     color: #f8f8f2;
     height: 30px;
+    width: 100px;
     line-height: 0px;
     border: 1px solid #f8f8f2;
     border-radius: 5px;
     background-color: transparent;
+}
+button:hover {
+    opacity: 0.5;
 }

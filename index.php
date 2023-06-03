@@ -18,9 +18,9 @@
 
     <div id="lantai">
         <button><</button>
-        <button>3</button>
-        <button onclick="this.id='active';run.keyboard['naik'] = true;">2</button>
-        <button id="active">1</button>
+        <button id="l3" onclick="gantiLantai(this, 29)">3</button>
+        <button id="l2" onclick="gantiLantai(this, 16)">2</button>
+        <button id="l1" onclick="gantiLantai(this, 3)" class="active">1</button>
         <button>></button>
     </div>
     <button id="log_user">Login User</button>
