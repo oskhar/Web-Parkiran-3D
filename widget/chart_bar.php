@@ -3,7 +3,8 @@
 $data_bar = [
     "label" => "'Januari', 'Februari', 'Maret', 'April'",
     "judul" => "Jumlah Pengendara Parkir 2023",
-    "data" => "43, 12, 32, 23"
+    "data" => "43, 12, 32, 23",
+    "color" => "#ECAFFF"
 ]
 
 ?>
@@ -17,10 +18,10 @@ $data_bar = [
     data: {
         labels: [<?php echo $data_bar["label"] ?>],
         datasets: [{
-        label: '<?php echo $data_bar["judul"] ?>',
-        data: [<?php echo $data_bar["data"] ?>],
-        backgroundColor: "#ECAFFF",
-        borderRadius: 5
+            label: '<?php echo $data_bar["judul"] ?>',
+            data: [<?php echo $data_bar["data"] ?>],
+            backgroundColor: '<?php echo $data_bar["color"] ?>',
+            borderRadius: 5
         }]
     },
     options: {
