@@ -1,0 +1,159 @@
+body{
+    background-color: #23262D;
+    overflow-x: hidden;
+    margin: 0px auto;
+    width: 1300px;
+}
+
+/* BAGIAN LATAR */
+.background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.background .latar{
+    background-color: #272A35;
+    width: 1000px;
+    height: 500px;
+    border-radius: 20px;
+}
+
+/* BAGIAN USERNAME */
+ .form_4 {
+    --width-of-input: 600px;
+    --border-height: 1px;
+    --border-before-color: rgba(221, 221, 221, 0.39);
+    --border-after-color: #5891ff;
+    --input-hovered-color: #4985e01f;
+    position: relative;
+    width: var(--width-of-input);
+   }
+   /* styling of Input */
+ .input_4 {
+    color: #fff;
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 600px;
+    box-sizing: border-box;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    border-bottom: var(--border-height) solid var(--border-before-color);
+    margin-top: 85px;
+    margin-left: 200px;
+   }
+   /* styling of animated border */
+.input-border_4 {
+    position: absolute;
+    background: var(--border-after-color);
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+    margin-left: 200px;
+   }
+   /* Hover on Input */
+input:hover {
+    background: var(--input-hovered-color);
+   }
+   
+input:focus {
+    outline: none;
+   }
+   /* here is code of animated border */
+input:focus ~ .input-border_4 {
+    width: 100%;
+   }
+
+   /* BAGIAN PASSWORD */
+ .form_3 {
+    --width-of-input: 600px;
+    --border-height: 1px;
+    --border-before-color: rgba(221, 221, 221, 0.39);
+    --border-after-color: #5891ff;
+    --input-hovered-color: #4985e01f;
+    position: relative;
+    width: var(--width-of-input);
+   }
+   /* styling of Input */
+ .input_3 {
+    color: #fff;
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 600px;
+    box-sizing: border-box;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    border-bottom: var(--border-height) solid var(--border-before-color);
+    margin-top: 85px;
+    margin-left: 200px;
+   }
+   /* styling of animated border */
+.input-border_3 {
+    position: absolute;
+    background: var(--border-after-color);
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+    margin-left: 200px;
+   }
+   /* Hover on Input */
+input:hover {
+    background: var(--input-hovered-color);
+   }
+   
+input:focus {
+    outline: none;
+   }
+   /* here is code of animated border */
+input:focus ~ .input-border_3 {
+    width: 100%;
+   }
+
+   /* BAGIAN TOMBOL */
+   /* BAGIAN TOMBOL SAVE DAN KEMBALI */
+.tombol{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px;
+}
+
+   button {
+    padding: 17px 40px;
+    border-radius: 10px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    font-weight: bold;
+   }
+   
+   button:hover {
+    letter-spacing: 3px;
+    background-color: #BD93F9;
+    color: black;
+    box-shadow: #BD93F9 0px 7px 29px 0px;
+   }
+   
+   button:active {
+    letter-spacing: 3px;
+    background-color: #BD93F9;
+    color: black;
+    box-shadow: #BD93F9 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+   }
