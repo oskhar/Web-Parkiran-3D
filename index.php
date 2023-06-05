@@ -11,7 +11,7 @@
         Category: Web Portfolio,
         Date: December 2020,
         Purpose: Training ">
-    <link rel="stylesheet" href="src/my_css/style.css">
+    <link rel="stylesheet" href="style/styleHalamanUtama.css">
     <title>Si Paling Parkir 😎</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
             }
         }
     </script>
-    <script type="module" src="src/my_js/App.js"></script>
+    <script type="module" src="js/App.js"></script>
     
 </body>
 </html>
