@@ -188,6 +188,7 @@ body{
   background-color: #BD93F9;
   border-radius: 20px;
   cursor: pointer;
+  border:none;
 }
 
 /* BAGIAN TOMBOL KELOLA AKUN ADMIN */
