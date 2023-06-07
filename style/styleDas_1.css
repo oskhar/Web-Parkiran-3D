@@ -32,7 +32,7 @@ table{
 
 table td{
     color: var(--w4);
-    padding: 10px;
+    padding: 5px;
 }
 
 table a{
@@ -52,15 +52,20 @@ table tr:not(:last-child){
 }
 
 #pagination button{
-  background-color: var(--w4);
+  background-color: var(--w1);
   border-radius: 2px;
   cursor: pointer;
   border:none;
   height: 25px;
   width: 25px;
+  opacity: 0.7;
 }
-
+#pagination button:hover {
+  opacity: 1;
+  box-shadow: 3px 3px 5px var(--w5);
+}
 #pagination #paginSelected {
+  opacity: 1;
   background-color: var(--w5);
 }
 

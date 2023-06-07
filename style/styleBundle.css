@@ -95,6 +95,7 @@ header #identitas {
     opacity: 0.8;
 }
 header #gridHeader {
+    position: relative;
     margin-top: 10px;
     display: grid;
     grid-template-rows: 40px 40px 40px 40px;
@@ -111,6 +112,7 @@ header #gridHeader button {
 }
 header #gridHeader button:hover {
     opacity: 1;
+    box-shadow: 3px 3px 10px var(--w5);
 }
 header #gridHeader #selected{
     background-color: var(--w5);
@@ -139,7 +141,7 @@ h1{
 }
 
 /* BAGIAN SEARCH */
-.form {
+.form-search {
     font-size: 0.9rem;
     gap: 0.5rem;
     align-items: center;

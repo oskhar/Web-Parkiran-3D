@@ -23,8 +23,8 @@
         <button id="l1" onclick="gantiLantai(this, 3)" class="active">1</button>
         <button>></button>
     </div>
-    <button id="log_user">Login User</button>
-    <button id="log_admin">Login Admin</button>
+    <button id="log_user" onclick="window.location='pages/loginUser.php';">Login User</button>
+    <button id="log_admin" onclick="window.location='pages/loginAdmin.php';">Login Admin</button>
     <script type="importmap">
         {
             "imports": {

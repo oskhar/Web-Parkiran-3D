@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Login User</title>
-    <link rel="stylesheet" href="../style/styleAdmin.css">
+    <link rel="stylesheet" href="../style/styleLogin.css">
 </head>
 <body>
 
@@ -22,11 +22,11 @@
                 <input type="password" name="password" id="password" placeholder="">
                 <br><br><br><br>
                 </div>
-            <button class="sign"><a href="http:">Sign in</a></button>
+            <button class="sign"><a href="http:">Login</a></button>
         </form>
         <div class="social-message">
             <div class="line"></div>
-            <p class="message"><a href="loginUser.html">Login Sebagai User</a></p>
+            <p class="message"><a href="loginUser.php">Login Sebagai User</a></p>
             <div class="line"></div>
         </div>
     </div>
