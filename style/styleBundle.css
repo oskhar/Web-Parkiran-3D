@@ -15,6 +15,7 @@ body {
     overflow: hidden;
     background-color: var(--w2);
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 main {
     display: grid;

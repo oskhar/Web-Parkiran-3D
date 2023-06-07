@@ -23,6 +23,9 @@ try {
 
 ?>
 <link rel="stylesheet" href="style/styleDas_1.css">
+<!-- BAGIAN JUDUL -->
+<h1>Dashboard</h1>
+
 <!-- BAGIAN LATAR -->
 <div class="latar">
 

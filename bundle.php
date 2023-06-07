@@ -1,4 +1,4 @@
-<?php $conn = mysqli_connect("localhost", "root", "", "parkir"); ?>
+<?php $conn = mysqli_connect("localhost", "root", "tesdoang", "parkir"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,10 +60,8 @@
         <?php
         
         if (isset($_GET['page'])) {
-            // echo "<h1>".ucfirst($_GET['page'])."</h1>";
             include "admin/$_GET[page].php";
         } else {
-            echo "<h1>Dasboard</h1>";
             include "admin/dasboard.php";
         }
         
