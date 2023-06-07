@@ -1,8 +1,6 @@
 body{
     background-color: #23262D;
     overflow-x: hidden;
-    margin: 0px auto;
-    width: 1300px;
 }
 
 /* BAGIAN JUDUL */
@@ -235,13 +233,13 @@ h1{
 
 
    /* BAGIAN TOMBOL SAVE DAN KEMBALI */
-.tombol{
+.tomboleditadmin{
     display: flex;
     justify-content: space-evenly;
     padding: 30px;
 }
 
-   button {
+   .tomboleditadmin button {
     padding: 17px 40px;
     border-radius: 10px;
     border: 0;
@@ -254,14 +252,14 @@ h1{
     font-weight: bold;
    }
    
-   button:hover {
+   .tomboleditadmin button:hover {
     letter-spacing: 3px;
     background-color: #BD93F9;
     color: black;
     box-shadow: #BD93F9 0px 7px 29px 0px;
    }
    
-   button:active {
+   .tomboleditadmin button:active {
     letter-spacing: 3px;
     background-color: #BD93F9;
     color: black;

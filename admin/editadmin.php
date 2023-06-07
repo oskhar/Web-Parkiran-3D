@@ -47,7 +47,7 @@
     </div>
 
     <!-- BAGIAN TOMBOL SAVE DAN KEMBALI -->
-    <div class="tombol">
+    <div class="tomboleditadmin">
         <button>KEMBALI</button>
         <button>SAVE</button>
     </div>
