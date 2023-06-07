@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Login User</title>
-    <link rel="stylesheet" href="style/styleEditAdmin.css">
-</head>
-<body>
+<link rel="stylesheet" href="style/styleEditAdmin.css">
 
-    <!-- BAGIAN JUDUL -->
-    <h1>DATA AKUN ADMIN</h1>
-
-    <!-- BAGIAN ISI -->
+<!-- BAGIAN ISI -->
+<div class="isi">
+<!-- BAGIAN JUDUL -->
+<h1>DATA AKUN ADMIN</h1>
     <div class="plat">
         <div class="nomor">
             <div class="nomor_1">
@@ -46,11 +37,9 @@
         </div>
     </div>
 
-    <!-- BAGIAN TOMBOL SAVE DAN KEMBALI -->
-    <div class="tombol">
-        <button>KEMBALI</button>
-        <button>SAVE</button>
-    </div>
-
-</body>
-</html>
+<!-- BAGIAN TOMBOL SAVE DAN KEMBALI -->
+<div class="tomboleditadmin">
+    <button>KEMBALI</button>
+    <button>SAVE</button>
+</div>
+</div>

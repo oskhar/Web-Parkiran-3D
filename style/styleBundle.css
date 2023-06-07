@@ -13,6 +13,8 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    background-color: var(--w2);
+    margin: 0;
 }
 main {
     display: grid;
