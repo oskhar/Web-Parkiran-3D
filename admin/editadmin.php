@@ -3,7 +3,7 @@
 <!-- BAGIAN ISI -->
 <div class="isi">
 <!-- BAGIAN JUDUL -->
-<h1>DATA AKUN ADMIN</h1>
+<h1>EDIT AKUN ADMIN</h1>
     <div class="plat">
         <div class="nomor">
             <div class="nomor_1">
