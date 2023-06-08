@@ -3,7 +3,10 @@
 try {
 
     // Mengambil banyaknya baris pada tabel user
-    $sql = "SELECT * FROM user";
+    $search = "";
+    if (isset($_GET['search']))
+        $search = $_GET['search'];
+    $sql = "SELECT * FROM user WHERE username LIKE '%$search%' OR username LIKE '%$search' OR username LIKE '$search%' OR username LIKE '$search'";
     $result = mysqli_query($conn, $sql);
     $len_data = mysqli_num_rows($result);
     $page_tabel = 0;
@@ -13,7 +16,7 @@ try {
     $pembagian = $len_data/15;
 
     // Mengambil data sesuai baris
-    $sql = "SELECT * FROM user LIMIT ".($page_tabel * 15 + 1).", ".$limit;
+    $sql = "SELECT * FROM user WHERE username LIKE '%$search%' OR username LIKE '%$search' OR username LIKE '$search%' OR username LIKE '$search' LIMIT ".($page_tabel * 15 + 1).", ".$limit;
     $result = mysqli_query($conn, $sql);
     
 } catch (\Throwable $er) {
@@ -53,7 +56,7 @@ try {
         <div id="pagination">
             <button><</button>
             <?php for($i = 0; $i < $pembagian; $i++): ?>
-                <a href="?limit=<?php echo $i ?>"><button <?php if($page_tabel == $i) echo "id='paginSelected'"; ?>><?php echo $i+1 ?></button></a>
+                <a href="?limit=<?php echo $i ?>&search=<?php if (isset($_GET['search'])) echo $_GET['search'] ?>"><button <?php if($page_tabel == $i) echo "id='paginSelected'"; ?>><?php echo $i+1 ?></button></a>
             <?php endfor; ?>
             <button>></button>
         </div>

@@ -1,9 +1,23 @@
 <?php
 
+session_start();
+include "../widget/koneksi.php";
+
 try {
-    session_start();
     if (isset($_POST['username'])) {
-        
+        $sql = "SELECT * FROM admin WHERE username='$_POST[username]' AND password='$_POST[password]'";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['password'] = $_POST['password'];
+            header("Location: ../bundle.php");
+        }
+    } else {
+        include "../widget/validasi_admin.php";
+        if ($validasi) {
+            header("Location: ../bundle.php");
+        }
+
     }
 
 } catch (\Throwable $er) {

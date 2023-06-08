@@ -1,4 +1,19 @@
-<?php $conn = mysqli_connect("localhost", "root", "tesdoang", "parkir"); ?>
+<?php 
+
+session_start();
+include "widget/koneksi.php";
+
+try {
+    include "widget/validasi_admin.php";
+    if (!$validasi) {
+        header("Location: pages/loginAdmin.php");
+    }
+} catch (\Throwable $er) {
+    echo (" (namafile.php) pesan: " . $er);
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,15 +34,15 @@
         <div id="isiHeader">
             <div id="identitas">Admin</div>
             <div id="gridHeader">
-                <button onclick="window.location='?page=dasboard';" id="selected">
+                <button onclick="window.location='?page=dashboard';" <?php if (isset($_GET['page'])) {if ($_GET['page'] == "" || $_GET['page'] == "dashboard") {echo 'id="selected"';}} else echo 'id="selected"'; ?>>
                     <div><svg viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm320 96c0-26.9-16.5-49.9-40-59.3V88c0-13.3-10.7-24-24-24s-24 10.7-24 24V292.7c-23.5 9.5-40 32.5-40 59.3c0 35.3 28.7 64 64 64s64-28.7 64-64zM144 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm-16 80a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM400 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg></div>
                     <p>Dashboard</p>
                 </button>
-                <button onclick="window.location='?page=grafik';">
+                <button onclick="window.location='?page=grafik';" <?php if (isset($_GET['page'])) if ($_GET['page'] == "grafik") echo 'id="selected"' ?>>
                     <div><svg viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm64 192c17.7 0 32 14.3 32 32v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V256c0-17.7 14.3-32 32-32zm64-64c0-17.7 14.3-32 32-32s32 14.3 32 32V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V160zM320 288c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32z"/></svg></div>
                     <p>Grafik</p>
                 </button>
-                <button onclick="window.location='?page=editadmin';">
+                <button onclick="window.location='?page=editadmin';" <?php if (isset($_GET['page'])) if ($_GET['page'] == "editadmin") echo 'id="selected"' ?>>
                     <div><svg viewBox="0 0 576 512"><path d="M352 144c0-44.2 35.8-80 80-80s80 35.8 80 80v48c0 17.7 14.3 32 32 32s32-14.3 32-32V144C576 64.5 511.5 0 432 0S288 64.5 288 144v48H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V256c0-35.3-28.7-64-64-64H352V144z"/></svg></div>
                     <p>Akun Admin</p>
                 </button>
@@ -41,7 +56,8 @@
     <div><nav>
         <button onclick="menu()">|||</button>
         <button onclick="window.location='?';">Home</button>
-        <form class="form-search">
+        <form class="form-search" >
+            <input type="hidden" name="page=<?php if (isset($_GET['page'])) echo $_GET['page'] ?>">
             <label for="search">
                 <div class="fancy-bg"></div>
                 <div class="search">
@@ -50,7 +66,7 @@
                             <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
                         </g>
                     </svg>
-                    <input class="input" type="text" placeholder="Search" id="search">
+                    <input class="input" type="text" placeholder="Search" id="search" name="search">
                 </div> 
             </label>
         </form>
@@ -62,7 +78,7 @@
         if (isset($_GET['page'])) {
             include "admin/$_GET[page].php";
         } else {
-            include "admin/dasboard.php";
+            include "admin/dashboard.php";
         }
         
         ?>
