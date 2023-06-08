@@ -16,7 +16,7 @@ try {
     $pembagian = $len_data/15;
 
     // Mengambil data sesuai baris
-    $sql = "SELECT * FROM user WHERE username LIKE '%$search%' OR username LIKE '%$search' OR username LIKE '$search%' OR username LIKE '$search' LIMIT ".($page_tabel * 15 + 1).", ".$limit;
+    $sql = "SELECT * FROM user WHERE username LIKE '%$search%' OR username LIKE '%$search' OR username LIKE '$search%' OR username LIKE '$search' LIMIT ".($page_tabel * 15).", ".$limit;
     $result = mysqli_query($conn, $sql);
     
 } catch (\Throwable $er) {

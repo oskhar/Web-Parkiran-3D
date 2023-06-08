@@ -42,7 +42,7 @@ try {
                     <div><svg viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm64 192c17.7 0 32 14.3 32 32v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V256c0-17.7 14.3-32 32-32zm64-64c0-17.7 14.3-32 32-32s32 14.3 32 32V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V160zM320 288c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32z"/></svg></div>
                     <p>Grafik</p>
                 </button>
-                <button onclick="window.location='?page=editadmin';" <?php if (isset($_GET['page'])) if ($_GET['page'] == "editadmin") echo 'id="selected"' ?>>
+                <button onclick="window.location='?page=akunadmin';" <?php if (isset($_GET['page'])) if ($_GET['page'] == "editadmin" || $_GET['page'] == "akunadmin") echo 'id="selected"' ?>>
                     <div><svg viewBox="0 0 576 512"><path d="M352 144c0-44.2 35.8-80 80-80s80 35.8 80 80v48c0 17.7 14.3 32 32 32s32-14.3 32-32V144C576 64.5 511.5 0 432 0S288 64.5 288 144v48H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V256c0-35.3-28.7-64-64-64H352V144z"/></svg></div>
                     <p>Akun Admin</p>
                 </button>
