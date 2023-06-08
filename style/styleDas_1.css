@@ -21,7 +21,6 @@ table{
   border-collapse: collapse;
   border: 20px solid var(--w3);
 }
-
 table td{
     color: var(--w4);
     padding: 8px;
@@ -65,8 +64,11 @@ table tr:not(:last-child){
 .grafik{
   background-color: var(--w3);
   border-radius: 7px;
-  /* height: 210px; */
   padding: 20px;
+}
+.grafik:hover{
+  box-shadow: 0px 3px 8px var(--selected);
+  transition: all 0.3s;
 }
 
 /* BAGIAN PENJELASAN */
@@ -77,4 +79,8 @@ table tr:not(:last-child){
   padding: 30px;
   color: var(--w4);
   border-radius: 7px;
+}
+#penjelasan:hover{
+  box-shadow: 0px 3px 8px var(--selected);
+  transition: all 0.3s;
 }

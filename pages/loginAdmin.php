@@ -3,6 +3,12 @@
 session_start();
 include "../widget/koneksi.php";
 
+$notif = false;
+$pesan = array(
+    "text" => "Username atau Password salah !!!",
+    "background" => "var(--danger)"
+);
+
 try {
     if (isset($_POST['username'])) {
         $sql = "SELECT * FROM admin WHERE username='$_POST[username]' AND password='$_POST[password]'";
@@ -11,6 +17,8 @@ try {
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
             header("Location: ../bundle.php");
+        } else {
+            $notif = true;
         }
     } else {
         include "../widget/validasi_admin.php";
@@ -37,9 +45,10 @@ try {
 </head>
 <body>
 
+<?php if($notif) include "../widget/popup_biasa.php"; ?>
     <div class="form-container">
         <p class="title">Login Admin 🔒</p>
-        <form class="form" method="post">
+        <form class="form" method="POST">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="">

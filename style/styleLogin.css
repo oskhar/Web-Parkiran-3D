@@ -1,3 +1,16 @@
+:root {
+  --w1: #fafafa;
+  --w2: #23262D;
+  --w3: #282A36;
+  --w4: #E4E5F1;
+  --w5: #ECAFFF;
+  --selected: #c072d7;
+  --shadow: rgba(255, 255, 255, 0.5);
+  --danger: #ff5555;
+  --warning: #f1fa8c;
+  --success: #50fa7b;
+}
+
 body{
     background-color: #23262D;
     width: 100%;
@@ -97,4 +110,12 @@ body{
   .social-message .message a{
   text-decoration: none;
   color:  rgba(167, 139, 250, 1);
+}
+
+/* KUMPULAN ANIMASI */
+@keyframes muncul_atas {
+  to {top:0px;}
+}
+@keyframes hilang_atas {
+  to {top:-100px;}
 }

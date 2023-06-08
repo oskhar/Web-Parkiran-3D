@@ -6,13 +6,17 @@
     --w5: #ECAFFF;
     --selected: #c072d7;
     --shadow: rgba(255, 255, 255, 0.5);
+    --danger: #ff5555;
+    --warning: #f1fa8c;
+    --success: #50fa7b;
 }
 
 /* BAGIAN AWAL */
 body {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     background-color: var(--w2);
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -30,7 +34,7 @@ nav {
     height: 60px;
     right: 0;
     top: 0;
-    grid-template-columns: 50px 50px 300px auto;
+    grid-template-columns: 50px 50px 300px auto 130px;
     box-shadow: 1px 0px 2px var(--shadow);
     background-color: var(--w3);
     display: grid;
@@ -50,13 +54,22 @@ nav button {
 nav button:hover {
     opacity: 1;
 }
+nav #logout p {
+    background-color: var(--danger);
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+}
 
 /* BAGIAN HEADER */
 header {
     color: var(--w3);
     position: relative;
     background-color: var(--w1);
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     box-shadow: 2px 2px 6px var(--shadow);
     overflow: hidden;
 }
@@ -136,7 +149,7 @@ header #gridHeader div svg{
 
 /* BAGIAN KONTEN */
 section {
-    padding-top: 30px;
+    padding-block: 30px;
     padding-inline: 50px;
 }
 h1{

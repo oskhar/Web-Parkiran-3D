@@ -1,42 +1,48 @@
 /* PEMBUNGKUS */
 #isi_grafik{
     display: grid;
-    grid-template-columns: 70% auto;
+    grid-template-columns: 76% auto;
     column-gap: 30px;
-}
-
-/* BAGIAN GRAFIK KECIL */
-.kotak div{
-    background-color: #272A35;
-    min-height: 100px;
-    border-radius: 7px;
-    margin-top: 30px;
-}
-
-.kotak div:hover{
-    box-shadow: 0px 0px 15px 2px #BD93F9;
-    transition: all 0.3s;
 }
 
 /* BAGIAN GRAFIK */
 .grafik{
-    background-color: #272A35;
+    position: relative;
+    padding: 50px;
+    background-color: var(--w3);
     border-radius: 7px;
-  }
-
-/* BAGIAN JUDUL DAN SEARCH */
-/* BAGIAN JUDUL */
-.display{
-    margin-inline: 50px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid #23262D;
-    margin-top: 70px;
+}
+.grafik:hover{
+    box-shadow: 0px 3px 8px var(--selected);
+    transition: all 0.3s;
 }
 
-.display h1{
-    color: rgb(248, 250, 252);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+/* BAGIAN GRAFIK KECIL */
+.kotak div{
+    background-color: var(--w3);
+    border-radius: 7px;
+    color: var(--w4);
     padding: 30px;
+}
+.kotak div:not(:nth-child(1)) {
+    margin-top: 30px;
+}
+.kotak div:hover{
+    box-shadow: 0px 3px 8px var(--selected);
+    transition: all 0.3s;
+}
+
+/* BAGIAN PENJELASAN */
+#isi_grafik #penjelasan{
+    position: relative;
+    background-color: var(--w3);
+    min-height: 200px;
+    margin-top: 30px;
+    color: var(--w4);
+    padding: 50px;
+    border-radius: 7px;
+}
+#isi_grafik #penjelasan:hover{
+    box-shadow: 0px 3px 8px var(--selected);
+    transition: all 0.3s;
 }

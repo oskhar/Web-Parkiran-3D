@@ -71,6 +71,7 @@ try {
             </label>
         </form>
         <div></div>
+        <button onclick="window.location.href='widget/logout.php';" id="logout"><p>Logout</p></button>
     </nav>
     <section>
         <?php
