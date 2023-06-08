@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="style/styleDas_2.css">
+<!-- Grafik -->
 <div id="isi_grafik">
     <!-- BAGIAN GRAFIK -->
     <div class="grafik"></div>

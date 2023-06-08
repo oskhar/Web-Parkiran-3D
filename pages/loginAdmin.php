@@ -1,3 +1,17 @@
+<?php
+
+try {
+    session_start();
+    if (isset($_POST['username'])) {
+        
+    }
+
+} catch (\Throwable $er) {
+    echo (" (loginAdmin.php) pesan: " . $er);
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +24,8 @@
 <body>
 
     <div class="form-container">
-        <p class="title">Login Admin</p>
-        <form class="form">
+        <p class="title">Login Admin 🔒</p>
+        <form class="form" method="post">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="">

@@ -51,7 +51,7 @@ table tr:not(:last-child){
   border:none;
   height: 25px;
   width: 25px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 #pagination button:hover {
   opacity: 1;
