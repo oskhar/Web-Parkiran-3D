@@ -2,12 +2,26 @@
 
 session_start();
 include "widget/koneksi.php";
+$notif = false;
 
 try {
+
+    // Tombol logout
+    if (isset($_GET["logout"])) {
+        $pesan = array(
+            "text" => "Anda telah berhasil logout ✅",
+            "background" => "var(--sucess)",
+            "link" => "widget/logout.php"
+        );
+        $notif = true;
+    }
+
+    // Validasi Admin
     include "widget/validasi_admin.php";
     if (!$validasi) {
         header("Location: pages/loginAdmin.php");
     }
+
 } catch (\Throwable $er) {
     echo (" (namafile.php) pesan: " . $er);
 
@@ -25,6 +39,7 @@ try {
     <title>Si Paling Parkir 😎</title>
 </head>
 <body>
+    <?php if ($notif) include "widget/popup_pindah.php"; ?>
     <main id="all">
     <header>
         <div id="titleHeader">
@@ -71,7 +86,7 @@ try {
             </label>
         </form>
         <div></div>
-        <button onclick="window.location.href='widget/logout.php';" id="logout"><p>Logout</p></button>
+        <button onclick="window.location.href='?logout=s';" id="logout"><p>Logout</p></button>
     </nav>
     <section>
         <?php

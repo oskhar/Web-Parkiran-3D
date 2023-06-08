@@ -16,6 +16,7 @@ try {
         if (mysqli_num_rows($result) > 0) {
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
+            $_SESSION['admin'] = true;
             header("Location: ../bundle.php");
         } else {
             $notif = true;
@@ -45,7 +46,7 @@ try {
 </head>
 <body>
 
-<?php if($notif) include "../widget/popup_biasa.php"; ?>
+    <?php if($notif) include "../widget/popup_biasa.php"; ?>
     <div class="form-container">
         <p class="title">Login Admin 🔒</p>
         <form class="form" method="POST">
@@ -67,7 +68,6 @@ try {
             <div class="line"></div>
         </div>
     </div>
-
-    
+    <a href=".."><button id="kembali"><<</button></a>
 </body>
 </html>

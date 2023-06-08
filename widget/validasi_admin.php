@@ -1,7 +1,7 @@
 <?php
 
 $validasi = false;
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['admin'])) {
     $username = $_SESSION['username'];
     $password = $_SESSION['password'];
     $sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";

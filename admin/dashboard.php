@@ -66,20 +66,28 @@ try {
         <!-- BAGIAN GRAFIK -->
         <div class="grafik">
             <?php 
-            
+            $result = mysqli_query($conn, "SELECT tanggal,jumlah FROM data_parkir ORDER BY id DESC LIMIT 7");
+            $data_grafik = array(
+                "label" => [],
+                "data" => []
+            );
+            while ($data = mysqli_fetch_assoc($result)) {
+                array_push($data_grafik['label'], $data['tanggal']);
+                array_push($data_grafik['data'], $data['jumlah']);
+            }
             $data_bar = [
-                "label" => "'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'",
+                "label" => array_reverse($data_grafik['label']),
                 "judul" => "Jumlah Pengendara Parkir 2023",
-                "data" => "43, 12, 32, 23, 13, 41, 21",
-                "color" => "'#ECAFFF'"
+                "data" => array_reverse($data_grafik['data']),
+                "color" => "#ECAFFF"
             ];
             include "widget/chart_bar.php";
             
             ?>
         </div>
         <div id="penjelasan">
-            <h3>Penjelasan</h3>
-            Pengendara yang Parkir mengalami peningkatan sebesar 32% jika dibandingkan dengan hari kemarin, dan berdasakan data minggu ini juga mengalami peningkatan sebesar 10% dari minggu lalu, sepertinya perlu ada penambahan lahan parkir jika pengendara yang parkir berkemungkinan untuk bertambah dikemudian hari
+            <h3>Penjelasan singkat</h3>
+            Tempat yang parkir selama satu minggu ini memiliki rata rata pengendara yang parkir sebanyak <?= number_format(array_sum($data_grafik['data'])/7, 0) ?>
         </div>
     </div>
 </div>

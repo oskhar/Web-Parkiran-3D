@@ -1,3 +1,39 @@
+<?php
+
+session_start();
+include "../widget/koneksi.php";
+
+$notif = false;
+$pesan = array(
+    "text" => "Username atau Password salah !!!",
+    "background" => "var(--danger)"
+);
+
+try {
+    if (isset($_POST['username'])) {
+        $sql = "SELECT * FROM user WHERE username='$_POST[username]' AND password='$_POST[password]'";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['password'] = $_POST['password'];
+            header("Location: ../bundle.php");
+        } else {
+            $notif = true;
+        }
+    } else {
+        include "../widget/validasi_admin.php";
+        if ($validasi) {
+            header("Location: ../bundle.php");
+        }
+
+    }
+
+} catch (\Throwable $er) {
+    echo (" (loginAdmin.php) pesan: " . $er);
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +45,11 @@
 </head>
 <body>
 
+    <?php if($notif) include "../widget/popup_biasa.php"; ?>
     <div class="form-container">
         <div class=""></div>
         <p class="title">Login User</p>
-        <form class="form">
+        <form class="form" method="post">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="">
@@ -32,6 +69,6 @@
         </div>
     </div>
 
-    
+    <a href=".."><button id="kembali"><<</button></a>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <script>
     let popup = document.createElement('div');
     popup.id = "notifikasi_popup";
-    popup.innerText = "Username atau Password salah !!!";
+    popup.innerText = <?= json_encode($pesan["text"]) ?>;
     popup.style.textAlign = 'center';
     popup.style.justifyContent = 'center';
     popup.style.fontSize = '18px';
@@ -15,9 +15,9 @@
     popup.style.top = '-100px';
     popup.style.borderBottomLeftRadius = '20px';
     popup.style.borderBottomRightRadius = '20px';
-    popup.style.background = '#FF5555';
+    popup.style.background = <?= json_encode($pesan["background"]) ?>;
     popup.style.animation = 'muncul_atas 500ms ease forwards';
-    popup.style.left = ((window.width - 600) / 2) + "px";
+    popup.style.left = "calc((100vw - 600px) / 2)";
     document.querySelector('body').appendChild(popup);
     setTimeout(() => {
         popup.style.top = '0px';
@@ -27,5 +27,6 @@
     }, 1500);
     setTimeout(() => {
         popup.remove();
+        window.location.href = <?= json_encode($pesan["link"]) ?>;
     }, 1800);
 </script>

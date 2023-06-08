@@ -6,11 +6,11 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: [<?php echo $data_bar["label"] ?>],
+            labels: <?= json_encode($data_bar["label"]) ?>,
             datasets: [{
-                label: '<?php echo $data_bar["judul"] ?>',
-                data: [<?php echo $data_bar["data"] ?>],
-                backgroundColor: <?php echo $data_bar["color"] ?>,
+                label: <?= json_encode($data_bar["judul"]) ?>,
+                data: <?= json_encode($data_bar["data"]) ?>,
+                backgroundColor: <?= json_encode($data_bar["color"]) ?>,
                 borderRadius: 5
             }]
         },

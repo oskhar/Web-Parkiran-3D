@@ -36,7 +36,6 @@
 #isi_grafik #penjelasan{
     position: relative;
     background-color: var(--w3);
-    min-height: 200px;
     margin-top: 30px;
     color: var(--w4);
     padding: 50px;

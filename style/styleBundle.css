@@ -6,9 +6,9 @@
     --w5: #ECAFFF;
     --selected: #c072d7;
     --shadow: rgba(255, 255, 255, 0.5);
-    --danger: #ff5555;
-    --warning: #f1fa8c;
-    --success: #50fa7b;
+    --danger: #f74373;
+    --warning: #ffc201;
+    --sucess: #23a943;
 }
 
 /* BAGIAN AWAL */
@@ -232,3 +232,9 @@ svg {
 /* TEMPORARY */
 .tutupNavbar { grid-template-columns: 220px auto; animation: navbarTutup 600ms 300ms forwards; }
 .bukaNavbar { grid-template-columns: 60px auto; animation: navbarBuka 600ms 300ms forwards; }
+@keyframes muncul_atas {
+  to {top:0px;}
+}
+@keyframes hilang_atas {
+  to {top:-100px;}
+}
