@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2023 at 05:49 AM
+-- Generation Time: Jun 09, 2023 at 02:45 AM
 -- Server version: 10.11.3-MariaDB
 -- PHP Version: 8.2.6
 
@@ -33,6 +33,16 @@ CREATE TABLE `admin` (
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'oskhar', '123'),
+(2, 'faiz', '123'),
+(3, 'mohammed', '123'),
+(4, 'seka', '123');
+
 -- --------------------------------------------------------
 
 --
@@ -40,8 +50,48 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `data_parkir` (
+  `id` int(11) NOT NULL,
   `tanggal` varchar(100) NOT NULL,
   `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `data_parkir`
+--
+
+INSERT INTO `data_parkir` (`id`, `tanggal`, `jumlah`) VALUES
+(181, '1 juni', 9),
+(182, '2 juni', 54),
+(183, '3 juni', 71),
+(184, '4 juni', 56),
+(185, '5 juni', 60),
+(186, '6 juni', 52),
+(187, '7 juni', 72),
+(188, '8 juni', 59),
+(189, '9 juni', 32),
+(190, '10 juni', 63),
+(191, '11 juni', 22),
+(192, '12 juni', 30),
+(193, '13 juni', 17),
+(194, '14 juni', 50),
+(195, '15 juni', 25),
+(196, '16 juni', 22),
+(197, '17 juni', 44),
+(198, '18 juni', 46),
+(199, '19 juni', 60),
+(200, '20 juni', 39);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komentar`
+--
+
+CREATE TABLE `komentar` (
+  `id` int(11) NOT NULL,
+  `tanggal` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `pesan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -53,8 +103,7 @@ CREATE TABLE `data_parkir` (
 CREATE TABLE `plat_nomor` (
   `nomor` varchar(100) NOT NULL,
   `id` int(11) NOT NULL,
-  `status` varchar(100) NOT NULL,
-  `lokasi` int(11) NOT NULL
+  `lokasi` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -129,7 +178,13 @@ ALTER TABLE `admin`
 -- Indexes for table `data_parkir`
 --
 ALTER TABLE `data_parkir`
-  ADD PRIMARY KEY (`tanggal`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `komentar`
+--
+ALTER TABLE `komentar`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `plat_nomor`
@@ -152,6 +207,18 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `data_parkir`
+--
+ALTER TABLE `data_parkir`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+
+--
+-- AUTO_INCREMENT for table `komentar`
+--
+ALTER TABLE `komentar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
