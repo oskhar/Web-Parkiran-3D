@@ -68,6 +68,15 @@ try {
             <h3>Laporan</h3>
             Pengendara yang parkir mengalami <?= $kemarin["kata"] ?> sebesar 🟦 <?= $kemarin["persen"] ?>% dibandingkan dengan hari kemarin, <?= $lusa["kata"] ?> sebesar 🟪 <?= $lusa["persen"] ?>% dengan 2 hari yang lalu. Rata rata pengendara parkir minggu ini adalah <?= $rata_minggu ?> pengendara, jika dibandingkan dengan pengendara yang parkir hari ini mengalami <?= $minggu_ini["kata"] ?> sebesar 🟥 <?= $minggu_ini["persen"] ?>%. Sedangkan minggu lalu rata rata pengendara parkir adalah <?= $rata_minggu_lalu ?> yang berarti mengalami <?= $minggu_lalu["kata"] ?> sebesar 🟩 <?= $minggu_lalu["persen"] ?>%.
         </div>
+        <div id="komen">
+            <form action="" method="post">
+                <h3>Pesan dan Catatan</h3>
+                <textarea name="komen"></textarea>
+                <button type="submit" value="kirim">kirim</button>
+            </form>
+            <h3 id="judul">Isi Catatan</h3>
+        </div>
+        <div id="list_komen"></div>
     </div>
 
     <div>

@@ -45,3 +45,49 @@
     box-shadow: 0px 3px 8px var(--selected);
     transition: all 0.3s;
 }
+
+/* BAGIAN KOMENTAR */
+#komen{
+    position: relative;
+    background-color: var(--w3);
+    min-height: 200px;
+    margin-top: 30px;
+    border-radius: 7px;
+    padding: 50px;
+}
+#komen:hover{
+    box-shadow: 0px 3px 8px var(--selected);
+    transition: all 0.3s;
+}
+#komen h3{
+    color: var(--w4);
+}
+#komen textarea{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    float: right;
+    background-color: var(--w4);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    
+}
+#komen button{
+    float: right;
+    width: 7rem;
+    height: 2rem;
+    font-size: 18px;
+    border: none;
+    background-color: var(--w5);
+    color: var(--w3);
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+#komen #judul{
+    position: relative;
+    margin-top: 300px;
+    width: 100%;
+    text-align: center;
+}
