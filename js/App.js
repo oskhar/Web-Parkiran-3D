@@ -61,8 +61,7 @@ class App extends THREE.WebGLRenderer {
             this.eye.putar(0.025);
         }
 
-        // Naik lantai
-
+        // Up floor
         if (this.keyboard['naik'] && !this.eye.rangeRender) {
             this.eye.rangeRender = true;
             this.keyboard['naik'] = false;

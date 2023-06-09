@@ -10,6 +10,8 @@ try {
     $result = mysqli_query($conn, $sql);
     $len_data = mysqli_num_rows($result);
     $page_tabel = 0;
+
+    // Menambahkan limit untuk tabel yang akan ditampilkan
     if (isset($_GET['limit']))
         $page_tabel = $_GET['limit'];
     $limit = $len_data - ($page_tabel*15) >= 15 ? 15 : $len_data - ($page_tabel*15);
@@ -20,19 +22,20 @@ try {
     $result = mysqli_query($conn, $sql);
     
 } catch (\Throwable $er) {
-    echo (" (dashboard.php) pesan: " . $er);
+    echo (" (akunadmin.php) pesan: " . $er);
 
 }
 
 ?>
 <link rel="stylesheet" href="style/styleAkunAdmin.css">
-<!-- BAGIAN JUDUL -->
+
+<!-- JUDUL -->
 <h1>Dashboard</h1>
 
-<!-- BAGIAN LATAR -->
+<!-- LATAR -->
 <div class="latar">
 
-    <!-- BAGIAN TABEL -->
+    <!-- TABEL -->
     <div id="tabel">
         <table>
             <tr style="font-weight:bold;">
@@ -41,6 +44,7 @@ try {
                 <td>PASSWORD</td>
                 <td colspan="2">AKSI</td>
             </tr>
+            <!-- Perulangan untuk mengambil seluruh data user dari database -->
             <?php $i = ($page_tabel*15+1); while ($data = mysqli_fetch_assoc($result)): ?>
                 <tr>
                     <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?= $i; ?></td>
@@ -51,6 +55,7 @@ try {
                 </tr>
             <?php $i++; endwhile; ?>
         </table>
+        <!-- Membuat tombol pagination untuk melihat data selebihnya -->
         <div id="pagination">
             <button><</button>
             <?php for($i = 0; $i < $pembagian; $i++): ?>
@@ -60,24 +65,11 @@ try {
         </div>
     </div>
 
+    <!-- GRAFIK BESERTA PENJELASAN -->
     <div id="tambahan">
-        <!-- BAGIAN GRAFIK -->
         <div class="grafik">
-            <?php 
-            
-            $data_bar = [
-                "label" => "'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'",
-                "judul" => "Jumlah Pengendara Parkir 2023",
-                "data" => "43, 12, 32, 23, 13, 41, 21",
-                "color" => "'#ECAFFF'"
-            ];
-            include "widget/chart_bar.php";
-            
-            ?>
         </div>
         <div id="penjelasan">
-            <h3>Penjelasan</h3>
-            Pengendara yang Parkir mengalami peningkatan sebesar 32% jika dibandingkan dengan hari kemarin, dan berdasakan data minggu ini juga mengalami peningkatan sebesar 10% dari minggu lalu, sepertinya perlu ada penambahan lahan parkir jika pengendara yang parkir berkemungkinan untuk bertambah dikemudian hari
         </div>
     </div>
 </div>

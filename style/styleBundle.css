@@ -96,7 +96,7 @@ header #titleHeader div div{
     left: 10px;
     top: 10px;
     border-radius: 50%;
-    background: url(../images/darkmode.jpg);
+    background: url(../assets/images/darkmode.jpg);
     background-size: cover;
 }
 header #isiHeader {

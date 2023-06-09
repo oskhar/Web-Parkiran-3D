@@ -1,53 +1,71 @@
 <?php
 
 try {
-    // Menghitung data grafik
+    // MENGHITUNG DATA PADA GRAFIK
     $data_grafik = array(
         "label" => [],
         "data" => []
     );
+
+        // Memasukan data dari database menjadi masing masing array
     $result = mysqli_query($conn, "SELECT tanggal,jumlah FROM data_parkir");
     while ($data = mysqli_fetch_assoc($result)) {
         array_push($data_grafik['label'], $data['tanggal']);
         array_push($data_grafik['data'], $data['jumlah']);
     }
+
+        // Menghitung data hari ini dengan kemarin
+    $data_saat_ini = $data_grafik['data'][count($data_grafik['data'])-1];
+    $data_kemarin = $data_grafik['data'][count($data_grafik['data'])-2];
     $kemarin = array(
-        "persen" => number_format(abs((($data_grafik['data'][count($data_grafik['data'])-1] - $data_grafik['data'][count($data_grafik['data'])-2])/72)*100), 2),
-        "kata" => $data_grafik['data'][count($data_grafik['data'])-1] > $data_grafik['data'][count($data_grafik['data'])-2] ? "peningkatan" : "penurunan"
+        "persen" => number_format(abs((($data_saat_ini - $data_kemarin)/72)*100), 2),
+        "kata" => $data_saat_ini > $data_kemarin ? "peningkatan" : "penurunan"
     );
 
-    $lusa = array(
-        "persen" => number_format(abs((($data_grafik['data'][count($data_grafik['data'])-1] - $data_grafik['data'][count($data_grafik['data'])-3])/72)*100), 2),
-        "kata" => $data_grafik['data'][count($data_grafik['data'])-1] > $data_grafik['data'][count($data_grafik['data'])-3] ? "peningkatan" : "penurunan"
+        // Menghitung data hari ini dengan kemarin lusa
+    $data_kemarin_lusa = $data_grafik['data'][count($data_grafik['data'])-3];
+    $kemarin_lusa = array(
+        "persen" => number_format(abs((($data_saat_ini - $data_kemarin_lusa)/72)*100), 2),
+        "kata" => $data_saat_ini > $data_kemarin_lusa ? "peningkatan" : "penurunan"
     );
 
+        // Menghitung rata rata pengunjung minggu ini
     $rata_minggu = 0;
     for ($i=1; $i <= 7; $i++) { 
         $rata_minggu += $data_grafik['data'][count($data_grafik['data'])-$i];
     }
+
+        // Menghitung data hari ini dengan rata rata dari pengunjung minggu ini
     $rata_minggu = number_format($rata_minggu/7, 0);
     $minggu_ini = array(
-        "persen" => number_format(abs((($data_grafik['data'][count($data_grafik['data'])-1] - $rata_minggu)/72)*100), 2),
-        "kata" => $data_grafik['data'][count($data_grafik['data'])-1] > $rata_minggu ? "peningkatan" : "penurunan"
+        "persen" => number_format(abs((($data_saat_ini - $rata_minggu)/72)*100), 2),
+        "kata" => $data_saat_ini > $rata_minggu ? "peningkatan" : "penurunan"
     );
 
+        // Menghitung rata rata pengunjung minggu ini
     $rata_minggu_lalu = 0;
     for ($i=8; $i <= 15; $i++) { 
         $rata_minggu_lalu += $data_grafik['data'][count($data_grafik['data'])-$i];
     }
+
+        // Menghitung data hari ini dengan rata rata dari pengunjung minggu ini
     $rata_minggu_lalu = number_format($rata_minggu_lalu/7, 0);
     $minggu_lalu = array(
-        "persen" => number_format(abs((($data_grafik['data'][count($data_grafik['data'])-1] - $rata_minggu_lalu)/72)*100), 2),
-        "kata" => $data_grafik['data'][count($data_grafik['data'])-1] > $rata_minggu_lalu ? "peningkatan" : "penurunan"
+        "persen" => number_format(abs((($data_saat_ini - $rata_minggu_lalu)/72)*100), 2),
+        "kata" => $data_saat_ini > $rata_minggu_lalu ? "peningkatan" : "penurunan"
     );
 
     // MEMASUKAN PESAN KE DATABASE
     if (isset($_POST['komen'])) {
+        
+            // Memasukan pesan ke database
         session_start();
         $username = $_SESSION['username'];
         $hari_ini = date("Y-m-d");
         $sql = "INSERT INTO komentar VALUES(0, '$hari_ini', '$username', '$_POST[komen]')";
         mysqli_query($conn, $sql);
+
+            // Munculkan popup ketika data berhasil dimasukan
         $pesan = array(
             "text" => "Pesan berhasil dikirim ✅",
             "background" => "var(--sucess)"
@@ -58,8 +76,12 @@ try {
 
     // MENGHAPUS PESAN
     if (isset($_GET['id_hapus'])) {
+
+            // Menghapus data dari database
         $sql = "DELETE FROM komentar WHERE id=$_GET[id_hapus]";
         mysqli_query($conn, $sql);
+
+            // Munculkan popup ketika data berhasil dihapus
         $pesan = array(
             "text" => "Pesan berhasil dihapus ✅",
             "background" => "var(--warning)"
@@ -68,7 +90,7 @@ try {
 
     }
 
-    // MEMBACA ISI DATABASE KOMENTAR
+    // MEMBACA ISI TABEL KOMENTAR DARI DATABASE
     $sql = "SELECT * FROM komentar";
     $result = mysqli_query($conn, $sql);
 
@@ -78,7 +100,7 @@ try {
 }
 
 ?>
-<link rel="stylesheet" href="style/styleDas_2.css">
+<link rel="stylesheet" href="style/grafik.css">
 <!-- JUDUL -->
 <h1>Grafik (Chart/Graph)</h1>
 <!-- GRAFIK -->
@@ -98,7 +120,7 @@ try {
         </div>
         <div id="penjelasan">
             <h3>Laporan</h3>
-            Pengendara yang parkir mengalami <?= $kemarin["kata"] ?> sebesar 🟦 <?= $kemarin["persen"] ?>% dibandingkan dengan hari kemarin, <?= $lusa["kata"] ?> sebesar 🟪 <?= $lusa["persen"] ?>% dengan 2 hari yang lalu. Rata rata pengendara parkir minggu ini adalah <?= $rata_minggu ?> pengendara, jika dibandingkan dengan pengendara yang parkir hari ini mengalami <?= $minggu_ini["kata"] ?> sebesar 🟥 <?= $minggu_ini["persen"] ?>%. Sedangkan minggu lalu rata rata pengendara parkir adalah <?= $rata_minggu_lalu ?> yang berarti mengalami <?= $minggu_lalu["kata"] ?> sebesar 🟩 <?= $minggu_lalu["persen"] ?>%.
+            Pengendara yang parkir mengalami <?= $kemarin["kata"] ?> sebesar 🟦 <?= $kemarin["persen"] ?>% dibandingkan dengan hari kemarin, <?= $kemarin_lusa["kata"] ?> sebesar 🟪 <?= $kemarin_lusa["persen"] ?>% dengan 2 hari yang lalu. Rata rata pengendara parkir minggu ini adalah <?= $rata_minggu ?> pengendara, jika dibandingkan dengan pengendara yang parkir hari ini mengalami <?= $minggu_ini["kata"] ?> sebesar 🟥 <?= $minggu_ini["persen"] ?>%. Sedangkan minggu lalu rata rata pengendara parkir adalah <?= $rata_minggu_lalu ?> yang berarti mengalami <?= $minggu_lalu["kata"] ?> sebesar 🟩 <?= $minggu_lalu["persen"] ?>%.
         </div>
         <div id="komen">
             <form method="post">
@@ -137,8 +159,8 @@ try {
                 <?php 
                     $data_donat = [
                         "canva" => 'c2',
-                        "label" => "'".ucfirst($lusa['kata'])." $lusa[persen]%', 'Kosong'",
-                        "data" => "$lusa[persen], ".(100-$lusa['persen']),
+                        "label" => "'".ucfirst($kemarin_lusa['kata'])." $kemarin_lusa[persen]%', 'Kosong'",
+                        "data" => "$kemarin_lusa[persen], ".(100-$kemarin_lusa['persen']),
                         "color" => "'#bd93f9'"
                     ];
                     include "widget/chart_donat.php";
