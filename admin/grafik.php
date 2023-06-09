@@ -1,6 +1,7 @@
 <?php
 
 try {
+    // Menghitung data grafik
     $data_grafik = array(
         "label" => [],
         "data" => []
@@ -40,6 +41,37 @@ try {
         "kata" => $data_grafik['data'][count($data_grafik['data'])-1] > $rata_minggu_lalu ? "peningkatan" : "penurunan"
     );
 
+    // MEMASUKAN PESAN KE DATABASE
+    if (isset($_POST['komen'])) {
+        session_start();
+        $username = $_SESSION['username'];
+        $hari_ini = date("Y-m-d");
+        $sql = "INSERT INTO komentar VALUES(0, '$hari_ini', '$username', '$_POST[komen]')";
+        mysqli_query($conn, $sql);
+        $pesan = array(
+            "text" => "Pesan berhasil dikirim ✅",
+            "background" => "var(--sucess)"
+        );
+        include "widget/popup_biasa.php";
+
+    }
+
+    // MENGHAPUS PESAN
+    if (isset($_GET['id_hapus'])) {
+        $sql = "DELETE FROM komentar WHERE id=$_GET[id_hapus]";
+        mysqli_query($conn, $sql);
+        $pesan = array(
+            "text" => "Pesan berhasil dihapus ✅",
+            "background" => "var(--warning)"
+        );
+        include "widget/popup_biasa.php";
+
+    }
+
+    // MEMBACA ISI DATABASE KOMENTAR
+    $sql = "SELECT * FROM komentar";
+    $result = mysqli_query($conn, $sql);
+
 } catch (\Throwable $er) {
     echo (" (grafik.php) pesan: " . $er);
 
@@ -69,12 +101,20 @@ try {
             Pengendara yang parkir mengalami <?= $kemarin["kata"] ?> sebesar 🟦 <?= $kemarin["persen"] ?>% dibandingkan dengan hari kemarin, <?= $lusa["kata"] ?> sebesar 🟪 <?= $lusa["persen"] ?>% dengan 2 hari yang lalu. Rata rata pengendara parkir minggu ini adalah <?= $rata_minggu ?> pengendara, jika dibandingkan dengan pengendara yang parkir hari ini mengalami <?= $minggu_ini["kata"] ?> sebesar 🟥 <?= $minggu_ini["persen"] ?>%. Sedangkan minggu lalu rata rata pengendara parkir adalah <?= $rata_minggu_lalu ?> yang berarti mengalami <?= $minggu_lalu["kata"] ?> sebesar 🟩 <?= $minggu_lalu["persen"] ?>%.
         </div>
         <div id="komen">
-            <form action="" method="post">
+            <form method="post">
                 <h3>Pesan dan Catatan</h3>
-                <textarea name="komen"></textarea>
+                <textarea name="komen" placeholder="Masukan pesan..." required></textarea>
                 <button type="submit" value="kirim">kirim</button>
             </form>
             <h3 id="judul">Isi Catatan</h3>
+            <?php while($data = mysqli_fetch_assoc($result)): ?>
+                <div>
+                    <b><?= $data['username'] ?>:</b><br>
+                    <sup><?= $data['tanggal'] ?></sup>
+                    <p><?= $data['pesan'] ?></p>
+                    <a href="?page=grafik&id_hapus=<?= $data['id'] ?>"><button id="hapus">X</button></a>
+                </div>
+            <?php endwhile; ?>
         </div>
         <div id="list_komen"></div>
     </div>

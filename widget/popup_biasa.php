@@ -17,7 +17,7 @@
     popup.style.borderBottomRightRadius = '20px';
     popup.style.background = <?= json_encode($pesan["background"]) ?>;
     popup.style.animation = 'muncul_atas 500ms ease forwards';
-    popup.style.left = ((window.width - 600) / 2) + "px";
+    popup.style.left = "calc((100vw - 600px) / 2)";
     document.querySelector('body').appendChild(popup);
     setTimeout(() => {
         popup.style.top = '0px';
