@@ -47,10 +47,10 @@ try {
             </tr>
             <?php $i = ($page_tabel*15+1); while ($data = mysqli_fetch_assoc($result)): ?>
                 <tr>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?php echo $i; ?></td>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?php echo $data['username'] ?></td>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?php echo $data['password'] ?></td>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><a href="">edit</a></td>
+                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?= $i; ?></td>
+                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?= $data['username'] ?></td>
+                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?= $data['password'] ?></td>
+                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><a href="?page=edituser&username=<?= $data['username'] ?>&password=<?= $data['password'] ?>">edit</a></td>
                     <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><a href="">hapus</a></td>
                     <td>Unactive</td>
                 </tr>
@@ -60,7 +60,7 @@ try {
         <div id="pagination">
             <button><</button>
             <?php for($i = 0; $i < $pembagian; $i++): ?>
-                <a href="?limit=<?php echo $i ?>&search=<?php if (isset($_GET['search'])) echo $_GET['search'] ?>"><button <?php if($page_tabel == $i) echo "id='paginSelected'"; ?>><?php echo $i+1 ?></button></a>
+                <a href="?limit=<?= $i ?>&search=<?php if (isset($_GET['search'])) echo $_GET['search'] ?>"><button <?php if($page_tabel == $i) echo "id='paginSelected'"; ?>><?= $i+1 ?></button></a>
             <?php endfor; ?>
             <button>></button>
         </div>

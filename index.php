@@ -4,7 +4,19 @@ try {
     
     include "widget/koneksi.php";
 
-    // MENGAMBIL DATA TEMPAT YANG TERISI DARI 
+    // MENGAMBIL DATA TEMPAT YANG TERISI DARI TABEL PLAT_NOMOR
+    $sql = "SELECT lokasi,lantai FROM plat_nomor";
+    $result = mysqli_query($conn, $sql);
+    $lokasi_ditempati = array(
+        "lokasi" => [],
+        "lantai" => []
+    );
+
+    // MEMASUKAN DATA LOKASI KE DALAM ARRAY
+    while ($data = mysqli_fetch_assoc($result)) {
+        array_push($lokasi_ditempati['lokasi'], $data['lokasi']);
+        array_push($lokasi_ditempati['lantai'], $data['lantai']);
+    }
 
 } catch (\Throwable $er) {
     echo (" (index.php) pesan: " . $er);
@@ -54,7 +66,7 @@ try {
 
     <!-- MASUKAN DATA PHP KE JS -->
     <script>
-        var sudah_ditempati = [<?= json_encode() ?>];
+        var sudah_ditempati = <?= json_encode($lokasi_ditempati) ?>;
     </script>
 
     <!-- IMPORT MAIN SCRIPT UNTUK MENGATUR THREE.JS -->

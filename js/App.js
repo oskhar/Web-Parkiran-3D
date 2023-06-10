@@ -69,7 +69,6 @@ class App extends THREE.WebGLRenderer {
         if (this.eye.rangeRender) {
             this.eye.ganti_lantai(this.lantai);
             this.eye.rangeRender = Math.floor(this.eye.position.y)+1 == this.lantai ? false : true;
-            console.log(this.eye.position.y + " - " + this.lantai);
         }
 
         // Action analog control
@@ -131,20 +130,25 @@ class MyWorld extends THREE.Scene {
     // Method
     check () {
         this.isiParkir = [[], [], []];
-        for (let x = 0; x < 3; x++) {
-            for (let i = 0; i < 14; i++) {
-                this.isiParkir[x].push({
-                    "path": "./assets/images/Kosong.png",
-                    "position": [31.5-(i*4.9), 2+(x*12.5), -12],
-                    "scale": [1, 3, 1]
-                });
-                this.isiParkir[x].push({
-                    "path": "./assets/images/Kosong.png",
-                    "position": [31.5-(i*4.9), 2+(x*12.5), 12],
-                    "scale": [1, 3, 1]
-                });
+        for (let z = 0; z < 2; z++) {
+            for (let x = 0; x < 3; x++) {
+                for (let i = 0; i < 14; i++) {
+                    this.isiParkir[x].push({
+                        "path": "./assets/images/Kosong.png",
+                        "position": [31.5-(i*4.9), 2+(x*12.5), -12+(24*z)],
+                        "scale": [1, 3, 1]
+                    });
+                }
             }
         }
+        for (let i = 0; i < sudah_ditempati["lokasi"].length; i++) {
+            let lantai = sudah_ditempati['lantai'][i];
+            let lokasi = sudah_ditempati['lokasi'][i];
+            console.log(lantai +" - "+ lokasi);
+            this.isiParkir[lantai][lokasi]['path'] = "./assets/images/Penuh.png";
+            
+        }
+            
     }
 
     // Method
