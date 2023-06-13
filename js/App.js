@@ -1,5 +1,5 @@
-import * as THREE from '../node_modules/three/build/three.module.js';
-import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from 'three';
+import { GLTFLoader } from 'GLTFLoader';
 import { AnalogControl } from './AnalogControl.js';
 import * as Model from './Model.js';
 
@@ -16,7 +16,6 @@ class App extends THREE.WebGLRenderer {
         this.keyboard = [];
         this.analog = new AnalogControl();
         this.rangeSide = 3;
-        this.homeLampOff = true;
         this.lantai = this.eye.position.y;
 
         // Set latar
@@ -199,7 +198,6 @@ class MyEye extends THREE.PerspectiveCamera {
     constructor (fov, asp, nea, far) {
 
         super(fov, asp, nea, far);
-        this.filmGauge = 4;
         this.position.y = 3;
         this.position.x = 30;
         this.rotation.y = -5;
@@ -235,19 +233,7 @@ let run = new App();
 
 // Keyboard control
 document.body.onkeydown = function (e) {
-    
     run.keyboard[e.key] = true;
-
-    if (e.key == "o") {
-        if (run.homeLampOff) {
-            run.world.homeLamp.distance = 10;
-            run.homeLampOff = false;
-        } else {
-            run.world.homeLamp.distance = 1;
-            run.homeLampOff = true;
-        }
-    }
-
 }
 document.body.onkeyup = function (e) {
     run.keyboard[e.key] = false;

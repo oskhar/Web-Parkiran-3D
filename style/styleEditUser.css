@@ -117,16 +117,16 @@ input:focus ~ .input-border_4 {
    
 .tombol_edituser button:hover {
     letter-spacing: 3px;
-    background-color: #BD93F9;
-    color: black;
-    box-shadow: #BD93F9 0px 7px 29px 0px;
+    background-color: var(--selected);
+    color: var(--w2);
+    box-shadow: var(--selected) 0px 7px 29px 0px;
    }
    
 .tombol_edituser button:active {
     letter-spacing: 3px;
-    background-color: #BD93F9;
-    color: black;
-    box-shadow: #BD93F9 0px 0px 0px 0px;
+    background-color: var(--selected);
+    color: var(--w2);
+    box-shadow: var(--selected) 0px 0px 0px 0px;
     transform: translateY(10px);
     transition: 100ms;
    }
