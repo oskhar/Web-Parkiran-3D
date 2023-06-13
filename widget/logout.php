@@ -1,9 +1,14 @@
 <?php
 
+// MENGHAPUS SESSION
 session_start();
-unset($_SESSION['user']);
-unset($_SESSION['pass']);
+unset($_SESSION['username']);
+unset($_SESSION['password']);
+unset($_SESSION['admin']);
 session_destroy();
-echo "<script>window.location.href='../pages/loginUser.php';</script>";
+
+// PINDAH HALAM KE USER
+$link_halaman_tujuan = "../pages/loginUser.php";
+echo "<script>window.location.href='$link_halaman_tujuan';</script>";
 
 ?>

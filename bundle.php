@@ -3,10 +3,11 @@
 session_start();
 include "widget/koneksi.php";
 $notif = false;
+$page = false;
 
 try {
 
-    // Tombol logout
+    // PROSES LOGOUT
     if (isset($_GET["logout"])) {
         $pesan = array(
             "text" => "Anda telah berhasil logout ✅",
@@ -16,14 +17,19 @@ try {
         $notif = true;
     }
 
-    // Validasi Admin
+    // VALIDASI ADMIN
     include "widget/validasi_admin.php";
     if (!$validasi) {
         header("Location: pages/loginAdmin.php");
     }
 
+    // DETEKSI PAGE TUJUAN
+    if (isset($_GET['page'])) {
+        $page = true;
+    }
+
 } catch (\Throwable $er) {
-    echo (" (namafile.php) pesan: " . $er);
+    echo (" (bundle.php) pesan: " . $er);
 
 }
 
@@ -35,7 +41,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/styleBundle.css">
-    <meta charset="utf-8"><link href="images/lightmode.jpg" alt="iniGambar" rel="icon" type="image/x-icon">
+    <meta charset="utf-8"><link href="assets/images/lightmode.jpg" alt="iniGambar" rel="icon" type="image/x-icon">
     <title>Si Paling Parkir 😎</title>
 </head>
 <body>
@@ -47,17 +53,17 @@ try {
             <p>Si Paling Parkir</p>
         </div>
         <div id="isiHeader">
-            <div id="identitas">Admin</div>
+            <div id="identitas">Admin</sup></div>
             <div id="gridHeader">
-                <button onclick="window.location='?page=dashboard';" <?php if (isset($_GET['page'])) {if ($_GET['page'] == "" || $_GET['page'] == "dashboard") {echo 'id="selected"';}} else echo 'id="selected"'; ?>>
+                <button onclick="window.location='?page=dashboard';" <?php if ($page) {if ($_GET['page'] == "" || $_GET['page'] == "dashboard") {echo 'id="selected"';}} else echo 'id="selected"'; ?>>
                     <div><svg viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm320 96c0-26.9-16.5-49.9-40-59.3V88c0-13.3-10.7-24-24-24s-24 10.7-24 24V292.7c-23.5 9.5-40 32.5-40 59.3c0 35.3 28.7 64 64 64s64-28.7 64-64zM144 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm-16 80a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM400 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg></div>
                     <p>Dashboard</p>
                 </button>
-                <button onclick="window.location='?page=grafik';" <?php if (isset($_GET['page'])) if ($_GET['page'] == "grafik") echo 'id="selected"' ?>>
+                <button onclick="window.location='?page=grafik';" <?php if ($page) if ($_GET['page'] == "grafik") echo 'id="selected"' ?>>
                     <div><svg viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm64 192c17.7 0 32 14.3 32 32v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V256c0-17.7 14.3-32 32-32zm64-64c0-17.7 14.3-32 32-32s32 14.3 32 32V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V160zM320 288c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32z"/></svg></div>
                     <p>Grafik</p>
                 </button>
-                <button onclick="window.location='?page=akunadmin';" <?php if (isset($_GET['page'])) if ($_GET['page'] == "editadmin" || $_GET['page'] == "akunadmin") echo 'id="selected"' ?>>
+                <button onclick="window.location='?page=akunadmin';" <?php if ($page) if ($_GET['page'] == "editadmin" || $_GET['page'] == "akunadmin") echo 'id="selected"' ?>>
                     <div><svg viewBox="0 0 576 512"><path d="M352 144c0-44.2 35.8-80 80-80s80 35.8 80 80v48c0 17.7 14.3 32 32 32s32-14.3 32-32V144C576 64.5 511.5 0 432 0S288 64.5 288 144v48H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V256c0-35.3-28.7-64-64-64H352V144z"/></svg></div>
                     <p>Akun Admin</p>
                 </button>
@@ -70,9 +76,9 @@ try {
     </header>
     <div><nav>
         <button onclick="menu()">|||</button>
-        <button onclick="window.location='?';">Home</button>
+        <button onclick="window.location='index.php';">Home</button>
         <form class="form-search" >
-            <input type="hidden" name="page=<?php if (isset($_GET['page'])) echo $_GET['page'] ?>">
+            <input type="hidden" name="page=<?php if ($page) echo $_GET['page'] ?>">
             <label for="search">
                 <div class="fancy-bg"></div>
                 <div class="search">
@@ -86,12 +92,12 @@ try {
             </label>
         </form>
         <div></div>
-        <button onclick="window.location.href='?logout=s';" id="logout"><p>Logout</p></button>
+        <button onclick="window.location.href='?logout=s<?= $page ? '&page='.$_GET['page'] : '' ?>';" id="logout"><p>Logout</p></button>
     </nav>
     <section>
         <?php
         
-        if (isset($_GET['page'])) {
+        if ($page) {
             include "admin/$_GET[page].php";
         } else {
             include "admin/dashboard.php";

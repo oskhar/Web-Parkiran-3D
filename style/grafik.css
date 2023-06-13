@@ -1,7 +1,7 @@
 /* PEMBUNGKUS */
 #isi_grafik{
     display: grid;
-    grid-template-columns: 76% auto;
+    grid-template-columns: 70% auto;
     column-gap: 30px;
 }
 
@@ -63,7 +63,7 @@
     color: var(--w4);
 }
 #komen textarea{
-    width: 100%;
+    width: 99%;
     height: 100px;
     position: relative;
     float: right;
@@ -71,7 +71,8 @@
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    
+    padding: 10px;
+    color: var(--w2);
 }
 #komen button{
     float: right;
@@ -80,7 +81,7 @@
     font-size: 18px;
     border: none;
     background-color: var(--w5);
-    color: var(--w3);
+    color: var(--w2);
     border-radius: 5px;
     margin-top: 10px;
     cursor: pointer;
@@ -90,4 +91,34 @@
     margin-top: 300px;
     width: 100%;
     text-align: center;
+}
+#komen div{
+    position: relative;
+    margin-top: 50px;
+}
+#komen b{
+    background: linear-gradient(to right, var(--w5), transparent);
+    border-bottom-left-radius: 7px;
+    padding: 2px;
+    padding-inline: 4px;
+    color: var(--w2);
+}
+#komen p{
+    margin-top: 0;
+    background: var(--w4);
+    padding: 15px;
+    color: var(--w2);
+    border-radius: 7px;
+    padding-inline: 20px;
+}
+#komen sup{
+    color: var(--w4);
+}
+#komen #hapus{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: var(--danger);
+    width: 3rem;
+    margin-top: 0;
 }

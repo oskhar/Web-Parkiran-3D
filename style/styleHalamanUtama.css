@@ -9,16 +9,16 @@ body {
     position: absolute;
     left: 20px;
     top: 5px;
-    width: 30px;
-    height: 250px;
+    width: 9vmin;
+    height: 46vmin;
     display: grid;
-    grid-template-rows: 30px 30px 30px 30px 30px;
-    row-gap: 20px;
+    grid-template-rows: 9vmin 9vmin 9vmin 9vmin 9vmin;
+    row-gap: 0.25vmin;
     z-index: 2;
 }
 
 #lantai button {
-    height: 30px;
+    height: 9vmin;
     position: relative;
     top: 10px;
     background-color: #6272a4;
@@ -26,6 +26,7 @@ body {
     border-radius: 5px;
     color: #f8f8f2;
     font-weight: bold;
+    font-size: 1.5rem;
 }
 
 #lantai button:nth-child(1), #lantai button:nth-last-child(1) {
@@ -45,27 +46,29 @@ body #lantai .active {
     position: absolute;
     top: 10px;
     right: 10px;
-    height: 30px;
+    height: 3rem;
     z-index: 2;
     color: #f8f8f2;
     line-height: 0px;
     border: none;
     background-color: transparent;
+    font-size: 1.5rem;
 }
 
 
 #log_user {
     position: absolute;
     top: 10px;
-    right: 110px;
+    right: 200px;
     z-index: 2;
     color: #f8f8f2;
-    height: 30px;
-    width: 100px;
+    height: 3rem;
+    width: 200px;
     line-height: 0px;
     border: 1px solid #f8f8f2;
     border-radius: 5px;
     background-color: transparent;
+    font-size: 1.5rem;
 }
 button:hover {
     opacity: 0.7;

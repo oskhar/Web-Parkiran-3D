@@ -1,0 +1,9 @@
+DATABASE "parkir"
+
+TABEL
+- user -> untuk menampung data akun user
+- admin -> untuk menampung data akun admin
+- data_parkir -> untuk melihat jumlah pengunjung parkir dalam priodik tertentu
+- plat_nomor -> untuk mendata seluruh plat nomor yang pernah masuk ke dalam parkiran
+- spot_parkir -> untuk menentukan setiap spot dari lokasi parkir
+- komentar -> untuk catatan tambahan para admin

@@ -7,7 +7,7 @@
     --selected: #c072d7;
     --shadow: rgba(255, 255, 255, 0.5);
     --danger: #f74373;
-    --warning: #ffc201;
+    --warning: #d2a100;
     --sucess: #23a943;
 }
 
@@ -96,7 +96,7 @@ header #titleHeader div div{
     left: 10px;
     top: 10px;
     border-radius: 50%;
-    background: url(../images/darkmode.jpg);
+    background: url(../assets/images/darkmode.jpg);
     background-size: cover;
 }
 header #isiHeader {

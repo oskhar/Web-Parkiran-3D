@@ -1,5 +1,5 @@
-import * as THREE from '../node_modules/three/build/three.module.js';
-import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from 'three';
+import { GLTFLoader } from 'GLTFLoader';
 import { AnalogControl } from './AnalogControl.js';
 import * as Model from './Model.js';
 
@@ -16,7 +16,6 @@ class App extends THREE.WebGLRenderer {
         this.keyboard = [];
         this.analog = new AnalogControl();
         this.rangeSide = 3;
-        this.homeLampOff = true;
         this.lantai = this.eye.position.y;
 
         // Set latar
@@ -61,8 +60,7 @@ class App extends THREE.WebGLRenderer {
             this.eye.putar(0.025);
         }
 
-        // Naik lantai
-
+        // Up floor
         if (this.keyboard['naik'] && !this.eye.rangeRender) {
             this.eye.rangeRender = true;
             this.keyboard['naik'] = false;
@@ -70,7 +68,6 @@ class App extends THREE.WebGLRenderer {
         if (this.eye.rangeRender) {
             this.eye.ganti_lantai(this.lantai);
             this.eye.rangeRender = Math.floor(this.eye.position.y)+1 == this.lantai ? false : true;
-            console.log(this.eye.position.y + " - " + this.lantai);
         }
 
         // Action analog control
@@ -132,20 +129,25 @@ class MyWorld extends THREE.Scene {
     // Method
     check () {
         this.isiParkir = [[], [], []];
-        for (let x = 0; x < 3; x++) {
-            for (let i = 0; i < 14; i++) {
-                this.isiParkir[x].push({
-                    "path": "./assets/images/Kosong.png",
-                    "position": [31.5-(i*4.9), 2+(x*12.5), -12],
-                    "scale": [1, 3, 1]
-                });
-                this.isiParkir[x].push({
-                    "path": "./assets/images/Kosong.png",
-                    "position": [31.5-(i*4.9), 2+(x*12.5), 12],
-                    "scale": [1, 3, 1]
-                });
+        for (let z = 0; z < 2; z++) {
+            for (let x = 0; x < 3; x++) {
+                for (let i = 0; i < 14; i++) {
+                    this.isiParkir[x].push({
+                        "path": "./assets/images/Kosong.png",
+                        "position": [31.5-(i*4.9), 2+(x*12.5), -12+(24*z)],
+                        "scale": [1, 3, 1]
+                    });
+                }
             }
         }
+        for (let i = 0; i < sudah_ditempati["lokasi"].length; i++) {
+            let lantai = sudah_ditempati['lantai'][i];
+            let lokasi = sudah_ditempati['lokasi'][i];
+            console.log(lantai +" - "+ lokasi);
+            this.isiParkir[lantai][lokasi]['path'] = "./assets/images/Penuh.png";
+            
+        }
+            
     }
 
     // Method
@@ -196,7 +198,6 @@ class MyEye extends THREE.PerspectiveCamera {
     constructor (fov, asp, nea, far) {
 
         super(fov, asp, nea, far);
-        this.filmGauge = 4;
         this.position.y = 3;
         this.position.x = 30;
         this.rotation.y = -5;
@@ -232,19 +233,7 @@ let run = new App();
 
 // Keyboard control
 document.body.onkeydown = function (e) {
-    
     run.keyboard[e.key] = true;
-
-    if (e.key == "o") {
-        if (run.homeLampOff) {
-            run.world.homeLamp.distance = 10;
-            run.homeLampOff = false;
-        } else {
-            run.world.homeLamp.distance = 1;
-            run.homeLampOff = true;
-        }
-    }
-
 }
 document.body.onkeyup = function (e) {
     run.keyboard[e.key] = false;
