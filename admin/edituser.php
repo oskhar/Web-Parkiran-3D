@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style/styleEditUser.css">
+<link rel="stylesheet" href="style/edit_user.css">
 
 <!-- JUDUL -->
 <form method="post" class="background">

@@ -69,7 +69,7 @@ try {
 }
 
 ?>
-<link rel="stylesheet" href="style/styleAkunAdmin.css">
+<link rel="stylesheet" href="style/akun_admin.css">
 
 <!-- JUDUL -->
 <h1>Dashboard</h1>

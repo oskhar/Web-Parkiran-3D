@@ -27,7 +27,7 @@ try {
 }
 
 ?>
-<link rel="stylesheet" href="style/styleDas.css">
+<link rel="stylesheet" href="style/dashboard.css">
 
 <!-- JUDUL -->
 <h1>Dashboard</h1>

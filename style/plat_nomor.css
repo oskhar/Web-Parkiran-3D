@@ -1,0 +1,160 @@
+:root {
+    --w1: #fafafa;
+    --w2: #23262D;
+    --w3: #282A36;
+    --w4: #E4E5F1;
+    --w5: #ECAFFF;
+    --selected: #c072d7;
+    --shadow: rgba(255, 255, 255, 0.5);
+    --danger: #f74373;
+    --warning: #ffc201;
+    --sucess: #23a943;
+}
+
+/* BAGIAN LATAR DAN BACKGROUND */
+body{
+  background-color: var(--w2);
+  overflow-x: hidden;
+}
+
+.latarBlkng{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 20px;
+  padding: 100px;
+  padding-top: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BAGIAN TABEL */
+#tabel_1{
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  overflow: hidden;
+}
+
+/* BAGIAN PENJELASAN */
+table{
+  /* BAGIAN PENJELASAN */
+  text-align: center;
+  width: 100%;
+  background-color: var(--w3);
+  border-collapse: collapse;
+  border: 20px solid var(--w3);
+}
+table td{
+    color: var(--w4);
+    padding: 8px;
+}
+
+table a{
+  color: var(--w5);
+  text-decoration: none;
+}
+
+table tr:not(:last-child){
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+/* BAGIAN PAGINATION */
+#pagination{
+  margin-top: 10px;
+  position: relative;
+  float: right;
+}
+
+#pagination button{
+  background-color: var(--w1);
+  border-radius: 2px;
+  cursor: pointer;
+  border:none;
+  height: 25px;
+  width: 25px;
+  opacity: 0.8;
+}
+#pagination button:hover {
+  opacity: 1;
+  box-shadow: 3px 3px 5px var(--w5);
+}
+#pagination #paginSelected {
+  opacity: 1;
+  background-color: var(--w5);
+}
+
+/* BAGIAN MENAMBAHKAN PLAT */
+.TambahPlat{
+  background-color: var(--w3);
+  border-radius: 7px;
+  padding: 20px;
+}
+.TambahPlat:hover{
+  box-shadow: 0px 3px 8px var(--selected);
+  transition: all 0.3s;
+}
+
+.TambahPlat .platMotor{
+  padding: 30px;
+}
+
+.TambahPlat .platMotor input{
+  width: 400px;
+  height: 30px;
+  background: no-repeat;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.TambahPlat .platMotor .tombolPlat{
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.TambahPlat .platMotor .tombolPlat button{
+  background: none;
+  background-color: var(--selected);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.TambahPlat .platMotor .tombolPlat select{
+  background: none;
+  background-color: var(--selected);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* BAGIAN EDIT LOKASI */
+#PlatMtr {
+  position: relative;
+  margin-top: 20px;
+  background: var(--w3);
+  padding: 30px;
+  color: var(--w4);
+  border-radius: 7px;
+}
+#PlatMtr:hover{
+  box-shadow: 0px 3px 8px var(--selected);
+  transition: all 0.3s;
+}
+
+#PlatMtr .name input{
+  width: 400px;
+  height: 30px;
+  background: no-repeat;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+#PlatMtr .radio{
+  display: flex;
+  justify-items: column;
+}
+
+#PlatMtr .radio input{
+
+}
