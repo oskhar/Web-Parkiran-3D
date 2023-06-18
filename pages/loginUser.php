@@ -23,8 +23,9 @@ try {
         if (mysqli_num_rows($result) > 0) {
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
+            $_SESSION['id'] = mysqli_fetch_array($result)['id'];
             $_SESSION['user'] = true;
-            header("Location: ../bundle.php");
+            header("Location: ../pages/akunuser.php");
         } else {
             $notif = true;
         }
@@ -34,7 +35,7 @@ try {
         // VALIDASI USER LOGIN DARI SESSION YANG TERSIMPAN
         include "../widget/validasi_user.php";
         if ($validasi) {
-            header("Location: ../bundle.php");
+            header("Location: ../pages/akunuser.php");
         }
 
     }

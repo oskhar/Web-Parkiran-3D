@@ -15,7 +15,7 @@
     background-color: var(--w3);
     width: 1000px;
     height: 500px;
-    border-radius: 20px;
+    border-radius: 7px;
 }
 
 /* BAGIAN USERNAME */
@@ -105,7 +105,7 @@ input:focus ~ .input-border_4 {
 
 .tombol_edituser button {
     padding: 17px 40px;
-    border-radius: 10px;
+    border-radius: 7px;
     border: 0;
     background-color: var(--w4);
     letter-spacing: 1.5px;
@@ -113,14 +113,14 @@ input:focus ~ .input-border_4 {
     font-size: 12px;
     transition: all .5s ease;
     font-weight: bold;
-   }
+}
    
 .tombol_edituser button:hover {
     letter-spacing: 3px;
     background-color: var(--selected);
     color: var(--w2);
     box-shadow: var(--selected) 0px 7px 29px 0px;
-   }
+}
    
 .tombol_edituser button:active {
     letter-spacing: 3px;
@@ -129,4 +129,21 @@ input:focus ~ .input-border_4 {
     box-shadow: var(--selected) 0px 0px 0px 0px;
     transform: translateY(10px);
     transition: 100ms;
-   }
+}
+
+/* TOMBOL KEMBALI */
+#kembali{
+    position: fixed;
+    left: 0;
+    top: 0;
+    border: none;
+    height: 100px;
+    width: 100px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 0px;
+    border-bottom-right-radius: 50%;
+    background-color: rgba(167, 139, 250, 1);
+    color: var(--w2);
+    cursor: pointer;
+}

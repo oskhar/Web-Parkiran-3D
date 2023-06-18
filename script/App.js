@@ -16,6 +16,14 @@ class App extends THREE.WebGLRenderer {
         this.keyboard = [];
         this.analog = new AnalogControl();
         this.rangeSide = 3;
+
+        // Set mata
+        if (lokasi_dipilih.length != 0) {
+            this.titik_awal = this.world.isiParkir[lokasi_dipilih[0]][lokasi_dipilih[1]];
+            this.eye.position.x = this.titik_awal["position"][0];
+            this.eye.position.y = lokasi_dipilih[0]*13+2;
+            this.eye.rotation.y = lokasi_dipilih[1] < 14 ? Math.PI*2 : Math.PI;
+        }
         this.lantai = this.eye.position.y;
 
         // Set latar
@@ -200,7 +208,6 @@ class MyEye extends THREE.PerspectiveCamera {
         super(fov, asp, nea, far);
         this.position.y = 3;
         this.position.x = 30;
-        this.rotation.y = -5;
         this.rangeRender = false;
 
     }

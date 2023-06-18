@@ -1,59 +1,39 @@
-:root {
-    --w1: #fafafa;
-    --w2: #23262D;
-    --w3: #282A36;
-    --w4: #E4E5F1;
-    --w5: #ECAFFF;
-    --selected: #c072d7;
-    --shadow: rgba(255, 255, 255, 0.5);
-    --danger: #f74373;
-    --warning: #ffc201;
-    --sucess: #23a943;
-}
-
-/* BAGIAN LATAR DAN BACKGROUND */
-body{
-  background-color: var(--w2);
-  overflow-x: hidden;
-}
-
 .latarBlkng{
   display: grid;
-  grid-template-columns: 50% 50%;
-  column-gap: 20px;
-  padding: 100px;
-  padding-top: 50px;
-  font-family: Arial, Helvetica, sans-serif;
+  grid-template-columns: 80% auto;
+  column-gap: 30px;
 }
 
+
 /* BAGIAN TABEL */
-#tabel_1{
+#tabel{
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
   overflow: hidden;
 }
 
-/* BAGIAN PENJELASAN */
 table{
-  /* BAGIAN PENJELASAN */
   text-align: center;
   width: 100%;
   background-color: var(--w3);
   border-collapse: collapse;
   border: 20px solid var(--w3);
 }
+table tr{
+  color: var(--w4);
+}
+table tr:nth-child(odd){
+  background-color: var(--darktable);
+}
+table tr:nth-child(1) {
+  background-color: var(--w4);
+  color: var(--w3);
+}
 table td{
-    color: var(--w4);
-    padding: 8px;
+    padding: 15px;
 }
-
-table a{
-  color: var(--w5);
-  text-decoration: none;
-}
-
-table tr:not(:last-child){
-    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+table td:nth-child(1){
+    width: 3rem;
 }
 
 /* BAGIAN PAGINATION */
@@ -82,79 +62,64 @@ table tr:not(:last-child){
 }
 
 /* BAGIAN MENAMBAHKAN PLAT */
+#tambahan #input_text{
+  width: 100%;
+  height: 30px;
+  background: no-repeat;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: var(--w4);
+}
+#tambahan button{
+  background: none;
+  background-color: var(--w5);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+#tambahan select{
+  background: none;
+  background-color: var(--w5);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-block: 10px;
+}
+#tambahan b{
+  color: var(--w5);
+}
 .TambahPlat{
   background-color: var(--w3);
   border-radius: 7px;
-  padding: 20px;
+  padding: 50px;
+  color: var(--w4);
 }
 .TambahPlat:hover{
   box-shadow: 0px 3px 8px var(--selected);
   transition: all 0.3s;
 }
 
-.TambahPlat .platMotor{
-  padding: 30px;
-}
-
-.TambahPlat .platMotor input{
-  width: 400px;
-  height: 30px;
-  background: no-repeat;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-
-.TambahPlat .platMotor .tombolPlat{
+.TambahPlat .tombolPlat{
   margin-top: 60px;
-  display: flex;
-  justify-content: space-between;
 }
-
-.TambahPlat .platMotor .tombolPlat button{
-  background: none;
+.TambahPlat .tombolPlat button:hover,
+.TambahPlat .tombolPlat select:hover{
+  letter-spacing: 1px;
   background-color: var(--selected);
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.TambahPlat .platMotor .tombolPlat select{
-  background: none;
-  background-color: var(--selected);
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
+  color: var(--w2);
+  box-shadow: var(--selected) 0px 5px 10px 0px;
 }
 
 /* BAGIAN EDIT LOKASI */
 #PlatMtr {
-  position: relative;
   margin-top: 20px;
   background: var(--w3);
-  padding: 30px;
-  color: var(--w4);
+  padding: 50px;
   border-radius: 7px;
+  color: var(--w4);
 }
 #PlatMtr:hover{
-  box-shadow: 0px 3px 8px var(--selected);
+  box-shadow: 0px 3px 8px var(--w5);
   transition: all 0.3s;
-}
-
-#PlatMtr .name input{
-  width: 400px;
-  height: 30px;
-  background: no-repeat;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-
-#PlatMtr .radio{
-  display: flex;
-  justify-items: column;
-}
-
-#PlatMtr .radio input{
-
 }

@@ -1,16 +1,3 @@
-:root {
-    --w1: #fafafa;
-    --w2: #23262D;
-    --w3: #282A36;
-    --w4: #E4E5F1;
-    --w5: #ECAFFF;
-    --selected: #c072d7;
-    --shadow: rgba(255, 255, 255, 0.5);
-    --danger: #f74373;
-    --warning: #d2a100;
-    --sucess: #23a943;
-}
-
 /* BAGIAN AWAL */
 body {
     height: 100%;
@@ -20,6 +7,7 @@ body {
     background-color: var(--w2);
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
 }
 main {
     display: grid;
@@ -146,6 +134,11 @@ header #gridHeader div svg{
     top: 10px;
     fill: var(--w3);
 }
+a{
+    color: var(--w5);
+    text-decoration: none;
+    cursor: pointer;
+}
 
 /* BAGIAN KONTEN */
 section {
@@ -178,7 +171,7 @@ h1{
     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
 }
 
-label {
+.form-search label {
     height: 40px;
     padding-inline: 1.2em;
     display: grid;
@@ -232,9 +225,3 @@ svg {
 /* TEMPORARY */
 .tutupNavbar { grid-template-columns: 220px auto; animation: navbarTutup 600ms 300ms forwards; }
 .bukaNavbar { grid-template-columns: 60px auto; animation: navbarBuka 600ms 300ms forwards; }
-@keyframes muncul_atas {
-  to {top:0px;}
-}
-@keyframes hilang_atas {
-  to {top:-100px;}
-}

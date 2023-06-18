@@ -1,32 +1,3 @@
-<?php
-
-try {
-
-    // Mengambil banyaknya baris pada tabel user
-    $search = "";
-    if (isset($_GET['search']))
-        $search = $_GET['search'];
-    $sql = "SELECT * FROM user WHERE username LIKE '%$search%' OR username LIKE '%$search' OR username LIKE '$search%' OR username LIKE '$search'";
-    $result = mysqli_query($conn, $sql);
-    $len_data = mysqli_num_rows($result);
-    $page_tabel = 0;
-
-    // Menambahkan limit untuk tabel yang akan ditampilkan
-    if (isset($_GET['limit']))
-        $page_tabel = $_GET['limit'];
-    $limit = $len_data - ($page_tabel*15) >= 15 ? 15 : $len_data - ($page_tabel*15);
-    $pembagian = $len_data/15;
-
-    // Mengambil data sesuai baris
-    $sql = "SELECT * FROM user WHERE username LIKE '%$search%' OR username LIKE '%$search' OR username LIKE '$search%' OR username LIKE '$search' LIMIT ".($page_tabel * 15).", ".$limit;
-    $result = mysqli_query($conn, $sql);
-    
-} catch (\Throwable $er) {
-    echo (" (dashboard.php) pesan: " . $er);
-
-}
-
-?>
 <link rel="stylesheet" href="style/dashboard.css">
 
 <!-- JUDUL -->
@@ -37,25 +8,29 @@ try {
 
     <!-- TABEL -->
     <div id="tabel">
-        <table>
-            <tr style="font-weight:bold;">
-                <td>ID</td>
-                <td>USERNAME</td>
-                <td>PASSWORD</td>
-                <td colspan="2">AKSI</td>
-                <td>STATUS</td>
-            </tr>
-            <?php $i = ($page_tabel*15+1); while ($data = mysqli_fetch_assoc($result)): ?>
-                <tr>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?= $i; ?></td>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?= $data['username'] ?></td>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><?= $data['password'] ?></td>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><a href="?page=edituser&username=<?= $data['username'] ?>&password=<?= $data['password'] ?>">edit</a></td>
-                    <td style="border-right:1px solid rgba(128, 128, 128, 0.5);"><a href="">hapus</a></td>
-                    <td>Unactive</td>
+        <div id="tabel_isi">
+            <h3>Data User</h3>
+            <table>
+                <tr style="font-weight:bold;">
+                    <td>ID</td>
+                    <td>USERNAME</td>
+                    <td>PASSWORD</td>
+                    <td>JUMLAH PLAT</td>
+                    <td colspan="3">AKSI</td>
                 </tr>
-            <?php $i++; endwhile; ?>
-        </table>
+                <?php $i = ($page_tabel*10+1); while ($data = mysqli_fetch_assoc($result)): ?>
+                    <tr>
+                        <td><?= $i; ?></td>
+                        <td><?= $data['username'] ?></td>
+                        <td><?= $data['password'] ?></td>
+                        <td><?= mysqli_num_rows(mysqli_query($conn, "SELECT id FROM plat_nomor WHERE id=$data[id]")) ?></td>
+                        <td><a href="?page=akunuser&id=<?= $data['id'] ?>">platnomor</a></td>
+                        <td><a href="?page=edituser&id=<?= $data['id'] ?>">edit</a></td>
+                        <td><a onclick="hapus_user('<?= ($data['id']) ?>', '<?= ($data['username']) ?>')">hapus</a></td>
+                    </tr>
+                <?php $i++; endwhile; ?>
+            </table>
+        </div>
         <!-- Membuat tombol pagination untuk melihat data selebihnya -->
         <div id="pagination">
             <button><</button>
@@ -96,7 +71,8 @@ try {
         </div>
         <div id="penjelasan">
             <h3>Penjelasan singkat</h3>
-            Tempat yang parkir selama satu minggu ini memiliki rata rata pengendara yang parkir sebanyak <?= number_format(array_sum($data_grafik['data'])/7, 0) ?>
+            Pengendara yang parkir selama satu minggu ini memiliki rata rata pengendara yang parkir sebanyak <?= number_format(array_sum($data_grafik['data'])/7, 0) ?> pengendara... <a href="bundle.php?page=grafik" style="color:var(--w5)">Lihat lengkap..</a>
         </div>
     </div>
 </div>
+<script src="script/dashboard.js"></script>
