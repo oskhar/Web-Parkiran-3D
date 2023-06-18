@@ -1,0 +1,12 @@
+ErrorDocument 404 /myApp/web-parkiran/not_found.php
+<IfModule mod_rewrite.c>
+
+    RewriteEngine on
+
+    RewriteRule ^$ halaman_utama.php [L]
+    RewriteRule ^index\.php$ halaman_utama.php [L]
+    RewriteRule ^halaman-utama$ halaman_utama.php [L]
+    RewriteRule ^home$ halaman_utama.php [L]
+    RewriteRule ^admin/$ not_found.php [L]
+
+</IfModule>
