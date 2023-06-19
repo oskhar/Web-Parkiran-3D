@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 13, 2023 at 10:27 AM
+-- Generation Time: Jun 19, 2023 at 08:31 AM
 -- Server version: 10.11.3-MariaDB
 -- PHP Version: 8.2.6
 
@@ -41,8 +41,6 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (2, 'faiz', '123'),
 (3, 'mohammed', '123'),
 (4, 'seka', '123'),
-(11, 'tes', 'tesdoang'),
-(12, 'a', 'a'),
 (13, 'oskhar', '123');
 
 -- --------------------------------------------------------
@@ -62,26 +60,26 @@ CREATE TABLE `data_parkir` (
 --
 
 INSERT INTO `data_parkir` (`id`, `tanggal`, `jumlah`) VALUES
-(181, '1 juni', 9),
-(182, '2 juni', 54),
-(183, '3 juni', 71),
-(184, '4 juni', 56),
-(185, '5 juni', 60),
-(186, '6 juni', 52),
-(187, '7 juni', 72),
-(188, '8 juni', 59),
-(189, '9 juni', 32),
-(190, '10 juni', 63),
-(191, '11 juni', 22),
-(192, '12 juni', 30),
-(193, '13 juni', 17),
-(194, '14 juni', 50),
-(195, '15 juni', 25),
-(196, '16 juni', 22),
-(197, '17 juni', 44),
-(198, '18 juni', 46),
-(199, '19 juni', 60),
-(200, '20 juni', 39);
+(181, '2023-06-01', 9),
+(182, '2023-06-02', 54),
+(183, '2023-06-03', 71),
+(184, '2023-06-04', 56),
+(185, '2023-06-05', 60),
+(186, '2023-06-06', 52),
+(187, '2023-06-07', 72),
+(188, '2023-06-08', 59),
+(189, '2023-06-09', 32),
+(190, '2023-06-10', 63),
+(191, '2023-06-11', 22),
+(192, '2023-06-12', 30),
+(193, '2023-06-13', 17),
+(194, '2023-06-14', 50),
+(195, '2023-06-15', 25),
+(196, '2023-06-16', 22),
+(197, '2023-06-17', 47),
+(198, '2023-06-18', 46),
+(199, '2023-06-19', 60),
+(200, '2023-06-20', 39);
 
 -- --------------------------------------------------------
 
@@ -116,53 +114,37 @@ CREATE TABLE `plat_nomor` (
   `nomor` varchar(100) NOT NULL,
   `id` int(11) NOT NULL,
   `lantai` int(11) DEFAULT NULL,
-  `lokasi` int(11) DEFAULT NULL
+  `lokasi` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `waktu_masuk` varchar(100) DEFAULT NULL,
+  `waktu_keluar` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `plat_nomor`
 --
 
-INSERT INTO `plat_nomor` (`nomor`, `id`, `lantai`, `lokasi`) VALUES
-('B1057ABC', 46, 0, 6),
-('B1084ABC', 57, 1, 17),
-('B1754ABC', 21, 2, 20),
-('B2161ABC', 16, 2, 22),
-('B2277ABC', 23, 2, 16),
-('B2406ABC', 7, 1, 20),
-('B2474ABC', 2, 2, 12),
-('B2935ABC', 10, 1, 8),
-('B3019ABC', 22, 1, 13),
-('B3481ABC', 16, 2, 21),
-('B3530ABC', 12, 2, 14),
-('B3772ABC', 54, 1, 23),
-('B4306ABC', 48, 2, 27),
-('B4394ABC', 10, 2, 11),
-('B4397ABC', 48, 1, 4),
-('B4407ABC', 53, 1, 16),
-('B4867ABC', 45, 1, 5),
-('B5278ABC', 52, 0, 7),
-('B5327ABC', 44, 2, 19),
-('B6124ABC', 7, 1, 12),
-('B6223ABC', 54, 2, 9),
-('B6243ABC', 42, 1, 16),
-('B6953ABC', 11, 2, 1),
-('B7039ABC', 3, 2, 25),
-('B7577ABC', 53, 2, 5),
-('B7589ABC', 18, 0, 13),
-('B7752ABC', 46, 2, 8),
-('B8256ABC', 18, 1, 1),
-('B8338ABC', 9, 1, 3),
-('B8690ABC', 3, 2, 19),
-('B8705ABC', 46, 2, 12),
-('B9185ABC', 20, 1, 15),
-('B9379ABC', 53, 1, 15),
-('B9391ABC', 57, 2, 6),
-('B9409ABC', 45, 1, 23),
-('B9516ABC', 59, 2, 24),
-('B9880ABC', 42, 2, 10),
-('B9948ABC', 23, 1, 25),
-('B9955ABC', 15, 0, 9);
+INSERT INTO `plat_nomor` (`nomor`, `id`, `lantai`, `lokasi`, `status`, `waktu_masuk`, `waktu_keluar`) VALUES
+('B0192PO', 14, 0, 26, 1, '2023-06-16 07:49:08', 'belum keluar'),
+('B1084AB', 15, 1, 9, 1, '2023-06-15 12:25:30', 'belum keluar'),
+('B1084AG', 61, 0, 1, 1, '2023-06-16 04:15:53', 'belum keluar'),
+('B1957AB', 18, 1, 3, 1, '2023-06-15 12:24:12', 'belum keluar'),
+('B2817GA', 14, 0, 11, 0, '2023-06-15 12:42:44', '2023-06-16 07:34:16'),
+('B2910OK', 1, 0, 4, 0, '2023-06-16 04:36:12', '2023-06-16 07:24:05'),
+('B8291JH', 17, 0, 19, 0, '2023-06-16 07:46:45', '2023-06-17 19:52:15'),
+('B8721KW', 53, 0, 15, 1, '2023-06-16 07:49:45', 'belum keluar'),
+('B9218PB', 11, 0, 8, 1, '2023-06-17 19:11:01', 'belum keluar'),
+('B9218PK', 11, 0, 10, 1, '2023-06-17 19:11:14', 'belum keluar'),
+('B9218PL', 11, 0, 20, 1, '2023-06-17 19:11:26', 'belum keluar'),
+('B9218PO', 11, 0, 6, 1, '2023-06-17 19:10:47', 'belum keluar'),
+('B9218PP', 11, 0, 11, 1, '2023-06-17 19:11:38', 'belum keluar'),
+('H9021YT', 49, 0, 17, 1, '2023-06-16 07:50:25', 'belum keluar'),
+('J3390OP', 59, 0, 24, 1, '2023-06-16 07:48:35', 'belum keluar'),
+('K0918OL', 19, 0, 18, 1, '2023-06-16 07:47:56', 'belum keluar'),
+('K8321IK', 19, 0, 12, 1, '2023-06-16 07:51:58', 'belum keluar'),
+('L8432PI', 15, 0, 9, 1, '2023-06-17 19:47:03', 'belum keluar'),
+('O9108KJ', 20, 0, 22, 1, '2023-06-16 07:46:57', 'belum keluar'),
+('P0291LO', 57, 0, 25, 1, '2023-06-16 07:47:29', 'belum keluar');
 
 -- --------------------------------------------------------
 
@@ -183,43 +165,43 @@ CREATE TABLE `spot_parkir` (
 
 INSERT INTO `spot_parkir` (`id`, `lokasi`, `lantai`, `status`) VALUES
 (1, 0, 0, 0),
-(2, 1, 0, 0),
+(2, 1, 0, 1),
 (3, 2, 0, 0),
 (4, 3, 0, 0),
 (5, 4, 0, 0),
 (6, 5, 0, 0),
-(7, 6, 0, 0),
+(7, 6, 0, 1),
 (8, 7, 0, 0),
-(9, 8, 0, 0),
-(10, 9, 0, 0),
-(11, 10, 0, 0),
-(12, 11, 0, 0),
-(13, 12, 0, 0),
+(9, 8, 0, 1),
+(10, 9, 0, 1),
+(11, 10, 0, 1),
+(12, 11, 0, 1),
+(13, 12, 0, 1),
 (14, 13, 0, 0),
-(15, 14, 0, 0),
-(16, 15, 0, 0),
+(15, 14, 0, 1),
+(16, 15, 0, 1),
 (17, 16, 0, 0),
-(18, 17, 0, 0),
-(19, 18, 0, 0),
+(18, 17, 0, 1),
+(19, 18, 0, 1),
 (20, 19, 0, 0),
-(21, 20, 0, 0),
-(22, 21, 0, 0),
-(23, 22, 0, 0),
+(21, 20, 0, 1),
+(22, 21, 0, 1),
+(23, 22, 0, 1),
 (24, 23, 0, 0),
-(25, 24, 0, 0),
-(26, 25, 0, 0),
-(27, 26, 0, 0),
+(25, 24, 0, 1),
+(26, 25, 0, 1),
+(27, 26, 0, 1),
 (28, 27, 0, 0),
 (29, 0, 1, 0),
 (30, 1, 1, 0),
 (31, 2, 1, 0),
-(32, 3, 1, 0),
+(32, 3, 1, 1),
 (33, 4, 1, 0),
 (34, 5, 1, 0),
 (35, 6, 1, 0),
 (36, 7, 1, 0),
 (37, 8, 1, 0),
-(38, 9, 1, 0),
+(38, 9, 1, 1),
 (39, 10, 1, 0),
 (40, 11, 1, 0),
 (41, 12, 1, 0),
@@ -284,16 +266,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'faiz', 'haidar'),
+(1, 'fai', '123aja'),
 (2, 'tanjung', 'arswendo'),
-(3, 'muh', 'oskhar'),
 (7, 'Abdurahman', 'Rafif'),
 (8, 'Rafif', 'Dawy'),
 (9, 'Daffa', 'Malik'),
 (10, 'Aidil', 'Riansyah'),
 (11, 'Fajar', 'Ganevi'),
 (12, 'Mohammed', 'Nashwan'),
-(13, 'Muhamad', 'Faried'),
 (14, 'Jestine', 'Vallendra'),
 (15, 'hadi', 'sudrajad'),
 (16, 'isna', 'latifa'),
@@ -323,7 +303,8 @@ INSERT INTO `user` (`id`, `username`, `password`) VALUES
 (57, 'Idile', '1023948'),
 (58, '918273@mhs.uinjkt.ac.id', '0872635'),
 (59, 'Mx|Xavior', '10928e47'),
-(60, '9938746@mhs.uinjkt.ac.id', '087515');
+(60, '9938746@mhs.uinjkt.ac.id', '087515'),
+(62, 'B1084AG', 'B1084AG');
 
 --
 -- Indexes for dumped tables
@@ -333,13 +314,16 @@ INSERT INTO `user` (`id`, `username`, `password`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `data_parkir`
 --
 ALTER TABLE `data_parkir`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tanggal` (`tanggal`),
+  ADD KEY `tanggal_2` (`tanggal`);
 
 --
 -- Indexes for table `komentar`
@@ -363,7 +347,8 @@ ALTER TABLE `spot_parkir`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -373,7 +358,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `data_parkir`
@@ -397,7 +382,7 @@ ALTER TABLE `spot_parkir`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

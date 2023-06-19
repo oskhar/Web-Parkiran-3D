@@ -69,7 +69,6 @@ try {
     <script>
         var sudah_ditempati = <?= json_encode($lokasi_ditempati) ?>;
         var lokasi_dipilih = <?= isset($_GET["lt"]) ? "[$_GET[lt], $_GET[loc]]" : "[]" ?>;
-        console.log(lokasi_dipilih);
     </script>
 
     <!-- IMPORT MAIN SCRIPT UNTUK MENGATUR THREE.JS -->

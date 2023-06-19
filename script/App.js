@@ -151,9 +151,11 @@ class MyWorld extends THREE.Scene {
         for (let i = 0; i < sudah_ditempati["lokasi"].length; i++) {
             let lantai = sudah_ditempati['lantai'][i];
             let lokasi = sudah_ditempati['lokasi'][i];
-            console.log(lantai +" - "+ lokasi);
             this.isiParkir[lantai][lokasi]['path'] = "./assets/images/Penuh.png";
             
+        }
+        if (lokasi_dipilih.length > 0) {
+            this.isiParkir[lokasi_dipilih[0]][lokasi_dipilih[1]]['path'] = "./assets/images/Pilihan.png";
         }
             
     }
