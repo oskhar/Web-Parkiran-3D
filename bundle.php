@@ -4,6 +4,7 @@ session_start();
 include "widget/koneksi.php";
 $notif = false;
 $page = false;
+date_default_timezone_set('Asia/Jakarta');
 
 try {
 

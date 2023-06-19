@@ -210,6 +210,7 @@ class MyEye extends THREE.PerspectiveCamera {
         super(fov, asp, nea, far);
         this.position.y = 3;
         this.position.x = 30;
+        this.rotation.y = Math.PI/4;
         this.rangeRender = false;
 
     }

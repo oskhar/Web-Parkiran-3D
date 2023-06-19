@@ -4,13 +4,23 @@ session_start();
 include "../widget/koneksi.php";
 include "../widget/warna.php";
 
-// VALIDASI USER LOGIN DARI SESSION YANG TERSIMPAN
-include "../widget/validasi_user.php";
-if (!$validasi) {
-    header("Location: loginUser.php");
-}
-
 try {
+    // PROSES LOGOUT
+    if (isset($_GET["logout"])) {
+        $pesan = array(
+            "text" => "Anda telah berhasil logout ✅",
+            "background" => "var(--sucess)",
+            "link" => "../widget/logout.php"
+        );
+        $notif_logout = true;
+    }
+    
+    // VALIDASI USER LOGIN DARI SESSION YANG TERSIMPAN
+    include "../widget/validasi_user.php";
+    if (!$validasi) {
+        header("Location: loginUser.php");
+    }
+
     // List untuk tampilan status
     $list_status = ["🔴", "🟢"];
 
@@ -37,9 +47,28 @@ try {
             background-color: var(--w2);
             padding: 50px;
         }
+        #logout{
+            background-color: transparent;
+            border: none;
+            position: fixed;
+            right: 50px;
+            top: 30px;
+        }
+        #logout p {
+            background-color: var(--danger);
+            height: 30px;
+            line-height: 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 10px;
+            padding: 5px;
+            padding-inline: 20px;
+            color: var(--w4);
+        }
     </style>
 </head>
 <body>
+    <?php if($notif_logout) include "../widget/popup_pindah.php" ?>
     <div class="latar">
         <div class="background">
             <h1>DATA USER</h1>
@@ -65,6 +94,7 @@ try {
             </div>
         </div>
     </div>
+    <button onclick="window.location.href='?logout=s';" id="logout"><p>Logout</p></button>
 
     <!-- TOMBOL KEMBALI KE HALAMAN UTAMA -->
     <a href=".."><button id="kembali"><<</button></a>

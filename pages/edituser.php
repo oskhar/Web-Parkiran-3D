@@ -4,13 +4,23 @@ session_start();
 include "../widget/koneksi.php"; 
 $notif = false;
 
-// VALIDASI USER LOGIN DARI SESSION YANG TERSIMPAN
-include "../widget/validasi_user.php";
-if (!$validasi) {
-    header("Location: loginUser.php");
-}
-
 try {
+
+    // PROSES LOGOUT
+    if (isset($_GET["logout"])) {
+        $pesan = array(
+            "text" => "Anda telah berhasil logout ✅",
+            "background" => "var(--sucess)",
+            "link" => "../widget/logout.php"
+        );
+        $notif_logout = true;
+    }
+
+    // VALIDASI USER LOGIN DARI SESSION YANG TERSIMPAN
+    include "../widget/validasi_user.php";
+    if (!$validasi) {
+        header("Location: loginUser.php");
+    }
 
     // Mendeteksi apakah ada data username pada post
     if (isset($_POST['username'])) {
@@ -63,10 +73,31 @@ try {
     <?php include "../widget/warna.php" ?>
     <link rel="stylesheet" href="../style/edit_user.css">
     <link href="../assets/images/lightmode.jpg" alt="iniGambar" rel="icon" type="image/x-icon">
+    <style>
+        #logout{
+            background-color: transparent;
+            border: none;
+            position: fixed;
+            right: 50px;
+            top: 30px;
+        }
+        #logout p {
+            background-color: var(--danger);
+            height: 30px;
+            line-height: 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 10px;
+            padding: 5px;
+            padding-inline: 20px;
+            color: var(--w4);
+        }
+    </style>
     <title>Edit Akun User</title>
 </head>
 <body style="background: var(--w2);">
     <?php if($notif) include "../widget/popup_biasa.php" ?>
+    <?php if($notif_logout) include "../widget/popup_pindah.php" ?>
     <!-- FORM INPUT DATA -->
     <form method="post" class="background">
         <div class="latar">
@@ -93,6 +124,7 @@ try {
 
     </form>
 
+    <button onclick="window.location.href='?logout=s';" id="logout"><p>Logout</p></button>
     <!-- TOMBOL KEMBALI KE HALAMAN UTAMA -->
     <a href="akunuser.php"><button id="kembali"><<</button></a>
 </body>
