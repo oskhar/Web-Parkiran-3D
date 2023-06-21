@@ -62,6 +62,7 @@
             <?php endif; ?>
         </form>
 
+        <!-- Form untuk tambah admin -->
         <form id="tambah_admin" method="post">
             <?php if(isset($_GET['username']) && isset($_GET['username'])): ?>
                 <div id="peringatan_edit_admin">Tidak bisa menambahkan data saat sedang mengedit data</div>

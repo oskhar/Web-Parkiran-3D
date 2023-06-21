@@ -1,5 +1,10 @@
+<!-- MENGAMBIL CSS STYLE -->
 <link rel="stylesheet" href="style/akunuser.css">
+
+<!-- LATAR -->
 <div class="latar">
+
+    <!-- MENAMPUNG SEMUA ELEMENT INTI -->
     <div class="background">
         <h1>DATA USER</h1>
         <div class="flex">
